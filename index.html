@@ -5,7 +5,7 @@
 		<link id="theme" href="/css/style.css" rel="stylesheet">
 		<script src="/js/theme.js"></script>
 	</head>
-	<body>
+	<body onload=setStyleFromCookie()>
 		<div id="header">
 			<div id ="nav">
 				<span id="nav-title">MadEwink</span>
@@ -14,8 +14,8 @@
 					<li><a href="https://gitlab.com/MadEwink">Gitlab</a></li>
 					<li><a href="https://framagit.org/MadEwink">Framagit</a></li>
 				</ul>
-				<button class="theme" id="light-theme-button" onClick="lightTheme()">Switch to light theme</button>
-				<button class="theme" id="dark-theme-button" style="display:none" onClick="darkTheme()">Switch to dark theme</button>
+				<button class="theme" id="light-theme-button" onClick="setLightTheme()">Switch to light theme</button>
+				<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
 			</div>
 		</div>
 		<div id="content">
