@@ -9,32 +9,32 @@ body {
 }
 
 a {
-	color: #ff99cc;
+	color: #800040;
 }
 
 #header {
-	color: white;
+	color: black;
 	border-bottom-style: solid;
-	border-color: #050514;
+	border-color: #ebebfa;
 	margin-bottom: 10px;
 	padding: 10px;
-	background-color: #0a0a29;
+	background-color: #c2c2f0;
 	box-sizing: border-box;
 }
 
 button.theme {
-	color: white;
-	background-color: #1f1f7a;
+	color: black;
+	background-color: #7070db;
 	padding: 8px;
 	border-style: solid;
-	border-color: #050514;
+	border-color: #ebebfa;
 	border-radius: 5px;
 }
 
 #intro {
-	background-color : #141452;
+	background-color : #9999e6;
 	border-style: solid;
-	border-color: #050514;
+	border-color: #ebebfa;
 	border-radius: 50px;
 	padding: 10px;
 }
@@ -51,7 +51,7 @@ ul#nav-links > li {
 }
 
 #content {
-	color: white;
+	color: black;
 	padding: 5px;
 }
 
@@ -72,19 +72,19 @@ ul#nav-links > li {
 #project-post {
 	padding: 5px;
 	margin: 3px;
-	background-color: #1f1f7a;
+	background-color: #7070db;
 	border-style: solid;
 	border-width: 3px;
-	border-color: #050514;
+	border-color: #ebebfa;
 	border-radius: 15px;
 }
 
 a#project-title {
 	margin-left: 10px;
 	text-decoration: none;
-	color: white;
+	color: black;
 	font-weight: bold;
-	text-shadow: 1px 1px 3px #adadeb;
+	text-shadow: 1px 1px 3px #0f0f3d;
 }
 
 #project-description {
@@ -99,7 +99,7 @@ img#project-image {
 	margin-left: 10px;
 	border-style: solid;
 	border-radius: 15px;
-	border-color: #050514;
+	border-color: #ebebfa;
 }
 
 #project-description > p {
@@ -116,21 +116,21 @@ ul#project-tags {
 ul#project-tags > li {
 	display: inline;
 	padding: 3px;
-	background-color: #191966;
+	background-color: #8585e0;
 	border-style: solid;
 	border-width: 2px;
-	border-color: #050514;
+	border-color: #ebebfa;
 	border-radius: 7px;
 }
 
 #footer {
-	color: white;
+	color: black;
 	border-top-style: solid;
-	border-color: #050514;
+	border-color: #ebebfa;
 	margin-top: 10px;
 	text-align: center;
 	padding: 10px;
-	background-color: #0a0a29;
+	background-color: #c2c2f0;
 	box-sizing: border-box;
 	width: 100%;
 	bottom: 0;
