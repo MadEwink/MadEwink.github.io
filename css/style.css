@@ -22,6 +22,20 @@ a {
 	box-sizing: border-box;
 }
 
+img#nav-pp {
+	border-style: solid;
+	border-color: #050514;
+	border-radius: 75px;
+	width: 150px;
+	display: block;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+#nav-title {
+	font-size: 2em;
+}
+
 button.theme {
 	color: white;
 	background-color: #1f1f7a;
@@ -31,23 +45,23 @@ button.theme {
 	border-radius: 5px;
 }
 
+ul#nav-links {
+	list-style-type: none;
+	text-align: right;
+}
+
+ul#nav-links > li {
+	font-size: 1.2em;
+	display: inline;
+	margin: 10px;
+}
+
 #intro {
 	background-color : #141452;
 	border-style: solid;
 	border-color: #050514;
 	border-radius: 50px;
 	padding: 10px;
-}
-
-ul#nav-links {
-	margin: 5px;
-	padding: 5px;
-	list-style-type: none;
-	text-align: right;
-}
-
-ul#nav-links > li {
-	display: inline;
 }
 
 #content {
