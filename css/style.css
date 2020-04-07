@@ -16,7 +16,6 @@ a {
 	color: white;
 	border-bottom-style: solid;
 	border-color: #050514;
-	margin-bottom: 10px;
 	padding: 10px;
 	background-color: #0a0a29;
 	box-sizing: border-box;
@@ -63,6 +62,11 @@ ul#nav-links > li {
 	border-color: #050514;
 	border-radius: 50px;
 	padding: 10px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 70%;
 }
 
 #content {
@@ -94,11 +98,14 @@ ul#nav-links > li {
 	border-radius: 15px;
 }
 
-a#project-title {
+h2#project-title {
 	margin-left: 10px;
+	font-weight: bold;
+}
+
+a#project-title {
 	text-decoration: none;
 	color: white;
-	font-weight: bold;
 	text-shadow: 1px 1px 3px #adadeb;
 }
 
