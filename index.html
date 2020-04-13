@@ -2,14 +2,16 @@
 <html>
 	<head>
 		<title>MadEwink portfolio</title>
-		<link id="theme" href="/css/style.css" rel="stylesheet">
+		<link href="/css/style.css" rel="stylesheet">
+		<link href="/css/darkstyle.css" title="Dark" rel="alternative stylesheet">
+		<link href="/css/lightstyle.css" title="Light" rel="alternative stylesheet">
 		<link rel="icon" href="/img/favicon.ico">
 		<script src="/js/theme.js"></script>
 	</head>
 	<body onload=setStyleFromCookie()>
 		<div id="header">
 			<div id ="nav">
-				<img id="nav-pp" src="/img/pp.png" alt="Profile picture">
+				<a href="/"><img id="nav-pp" src="/img/pp.png" alt="Profile picture"></a>
 				<br/>
 				<div id="nav-title">MadEwink</div>
 				<ul id="nav-links">
@@ -17,7 +19,8 @@
 					<li><a href="https://gitlab.com/MadEwink">Gitlab</a></li>
 					<li><a href="https://framagit.org/MadEwink">Framagit</a></li>
 				</ul>
-				<button class="theme" id="light-theme-button" onClick="setLightTheme()">Switch to light theme</button>
+				<!-- Does not work anymore -->
+				<button class="theme" id="light-theme-button" style="display:none" onClick="setLightTheme()">Switch to light theme</button>
 				<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
 			</div>
 		</div>
@@ -172,9 +175,10 @@
 				--!>
 			</div>
 		</div>
-		<div id="footer">
+		<footer>
 			MadEwink<br/>
-			This site is open source.
-		</div>
+			This site is open source.<br/>
+			It is hosted on github <a href = "https://github.com/MadEwink/MadEwink.github.io/">there</a>.
+		</footer>
 	</body>
 </html>

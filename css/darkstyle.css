@@ -1,0 +1,57 @@
+body {
+	background-image: url("/img/hex_bg.png");
+}
+
+a {
+	color: #ff99cc;
+}
+
+#header {
+	color: white;
+	border-color: #050514;
+	background-color: #0a0a29;
+}
+
+img#nav-pp {
+	border-color: #050514;
+}
+
+button.theme {
+	color: white;
+	background-color: #1f1f7a;
+	border-color: #050514;
+}
+
+#intro {
+	background-color : #141452;
+	border-color: #050514;
+}
+
+#content {
+	color: white;
+}
+
+#project-post {
+	background-color: #1f1f7a;
+	border-color: #050514;
+}
+
+a#project-title {
+	color: white;
+	text-shadow: 1px 1px 3px #adadeb;
+}
+
+img#project-image {
+	border-color: #050514;
+}
+
+ul#project-tags > li {
+	background-color: #191966;
+	border-color: #050514;
+}
+
+footer {
+	color: white;
+	border-color: #050514;
+	background-color: #0a0a29;
+}

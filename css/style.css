@@ -1,6 +1,12 @@
+html {
+	height: 100%;
+}
+
 body {
+	display: flex;
+	flex-direction: column;
 	margin: 0;
-	background-image: url("/img/hex_bg.png");
+	height: 100%;
 }
 @media (max-width: 1110px) {
 	body {
@@ -8,22 +14,14 @@ body {
 	}
 }
 
-a {
-	color: #ff99cc;
-}
-
 #header {
-	color: white;
 	border-bottom-style: solid;
-	border-color: #050514;
 	padding: 10px;
-	background-color: #0a0a29;
 	box-sizing: border-box;
 }
 
 img#nav-pp {
 	border-style: solid;
-	border-color: #050514;
 	border-radius: 75px;
 	width: 150px;
 	display: block;
@@ -37,11 +35,8 @@ img#nav-pp {
 }
 
 button.theme {
-	color: white;
-	background-color: #1f1f7a;
 	padding: 8px;
 	border-style: solid;
-	border-color: #050514;
 	border-radius: 5px;
 }
 
@@ -57,9 +52,7 @@ ul#nav-links > li {
 }
 
 #intro {
-	background-color : #141452;
 	border-style: solid;
-	border-color: #050514;
 	border-radius: 50px;
 	padding: 10px;
 	margin-top: 30px;
@@ -70,7 +63,6 @@ ul#nav-links > li {
 }
 
 #content {
-	color: white;
 	padding: 5px;
 }
 
@@ -91,10 +83,8 @@ ul#nav-links > li {
 #project-post {
 	padding: 5px;
 	margin: 3px;
-	background-color: #1f1f7a;
 	border-style: solid;
 	border-width: 3px;
-	border-color: #050514;
 	border-radius: 15px;
 }
 
@@ -105,8 +95,6 @@ h2#project-title {
 
 a#project-title {
 	text-decoration: none;
-	color: white;
-	text-shadow: 1px 1px 3px #adadeb;
 }
 
 #project-description {
@@ -121,7 +109,6 @@ img#project-image {
 	margin-left: 10px;
 	border-style: solid;
 	border-radius: 15px;
-	border-color: #050514;
 }
 
 #project-description > p {
@@ -138,21 +125,16 @@ ul#project-tags {
 ul#project-tags > li {
 	display: inline;
 	padding: 3px;
-	background-color: #191966;
 	border-style: solid;
 	border-width: 2px;
-	border-color: #050514;
 	border-radius: 7px;
 }
 
-#footer {
-	color: white;
+footer {
 	border-top-style: solid;
-	border-color: #050514;
-	margin-top: 10px;
+	margin-top: auto;
 	text-align: center;
 	padding: 10px;
-	background-color: #0a0a29;
 	box-sizing: border-box;
 	width: 100%;
 	bottom: 0;
