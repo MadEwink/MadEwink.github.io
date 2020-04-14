@@ -1,0 +1,50 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Projects | MadEwink portfolio</title>
+		<link href="/css/style.css" rel="stylesheet">
+		<link href="/css/darkstyle.css" title="Dark" rel="alternative stylesheet">
+		<link href="/css/lightstyle.css" title="Light" rel="alternative stylesheet">
+		<link rel="icon" href="/img/favicon.ico">
+		<script src="/js/theme.js"></script>
+	</head>
+	<body onload=setStyleFromCookie()>
+		{% include header.html %}
+		<div id="content">
+			<div id="intro">
+				<h2>My projects</h2>
+				<p>On this page you will find all my projects, but organized in categories and without description.</p>
+			</div>
+			<div id="projects">
+				<div id="project-post">
+					<h2 id="project-title"><a id="project-title" href="">Game development</a></h2>
+					<div id="project-description">
+						<a href=""><img id="project-image" src="/img/" alt=""></a>
+						<p></p>
+					</div>
+					<ul id="project-tags">
+						<li>Game developement</li>
+						<li>Unity</li>
+					</ul>
+				</div>
+				<!-- New post
+				<div id="project-post">
+					<h2 id="project-title"><a id="project-title" href=""></a></h2>
+					<div id="project-description">
+						<a href=""><img id="project-image" src="/img/" alt=""></a>
+						<p></p>
+					</div>
+					<ul id="project-tags">
+						<li>Tag</li>
+					</ul>
+				</div>
+				--!>
+			</div>
+		</div>
+		<footer>
+			MadEwink<br/>
+			This site is open source.<br/>
+			It is hosted on github <a href = "https://github.com/MadEwink/MadEwink.github.io/">there</a>.
+		</footer>
+	</body>
+</html>
