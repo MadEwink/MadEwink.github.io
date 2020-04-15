@@ -1,0 +1,52 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>About | MadEwink portfolio</title>
+		<link href="/css/style.css" rel="stylesheet">
+		<link href="/css/darkstyle.css" id="Dark-theme" title="Dark" rel="alternative stylesheet">
+		<link href="/css/lightstyle.css" id="Light-theme" title="Light" rel="alternative stylesheet">
+		<link rel="icon" href="/img/favicon.ico">
+		<script src="/js/theme.js"></script>
+	</head>
+	<body onload=setStyleFromCookie()>
+		<div id="header">
+			<div id ="nav">
+				<a href="/"><img id="nav-pp" src="/img/pp.png" alt="Profile picture"></a>
+				<br/>
+				<div id="nav-title">MadEwink</div>
+				<ul id="nav-links">
+					<li><a href="https://github.com/MadEwink">Github</a></li>
+					<li><a href="https://gitlab.com/MadEwink">Gitlab</a></li>
+					<li><a href="https://framagit.org/MadEwink">Framagit</a></li>
+				</ul>
+				<button class="theme" id="light-theme-button" style="display:none" onClick="setLightTheme()">Switch to light theme</button>
+				<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
+			</div>
+		</div>
+		<div id="content">
+			<div id="intro">
+				<h2>About this site</h2>
+				<p>Here you will find some more informations about this website.</p>
+			</div>
+			<div id="main-content">
+				<h2>What is this site ?</h2>
+				<p>This site is my portfolio. I use it as an overview of the projects I did or participated to, but it is also one of those projects, and quite my first experience of somewhat good website development. I love to do stuff by myself, so this is 100% handcrafted, using my knowledge, and the help I can find online. I tend to think I am not a good designer, so I take a lot of inspiration from others.</p>
+				<h2>Who am I ?</h2>
+				<p>I am MadEwink online. I like not to use my legal name on the internet. Basically I am just someone who likes to do stuff. I do love programming, but I have a lot of hobbies that include handcrafting, like knitting or embroidery.</p>
+				<h2>How did I make this site ?</h2>
+				<p>I began writing HTML and CSS. Then, when I reached four pages, I decided it was time to use a Static Site Generator in order to be able to modify the header, footer, and other stuff more easily. I wanted to try do make my own, if you had not guessed, since I had time (have you heard of the COVID-19 ?), and you may have guessed that I love doing stuff on my own. You can find it in the <a href="https://github.com/MadEwink/MadEwink.github.io/">project sources</a>, <a href="https://github.com/MadEwink/MadEwink.github.io/tree/master/python">there</a>.</p>
+				<p>However, none of this would have been possible without help. Thus, I would like to thank a couple people.</p>
+				<ul>
+					<li>Amit Patel on <a href="https://www.redblobgames.com/">Red Blob Games</a>, who makes amazing stuff, and has an amazing site, two things I used and took inspiration from for my own site. My animations would not exist without his.</li>
+					<li>Nicky Case on <a href="https://ncase.me/">her blog</a>, quite the same as Amit Patel, and whose work made me want to do my own site and put interactive stuff on it. My site would not exist without hers.</li>
+					<li>Debiantarte on <a href="https://debiantarte.github.io/">his portfolio</a> and Matthias4217 on <a href="https://matthias4217.github.io/">his own</a>, my friends who made their portfolios before me, drawing my attention to the subject, and who were beta testers of this site. My site look was also partly inspired from Debiantarte's theme. My site would not exist without them either.</li>
+					<li>My girlfriend, who beta tests my site while I'm doing it and who has to put up with me while I am doing it.</li>
+			</div>
+		</div>
+		<footer>
+			MadEwink<br/>
+			This site is open source.<br/>
+			It is hosted on github <a href = "https://github.com/MadEwink/MadEwink.github.io/">there</a>.
+		</footer>
+	</body>
+</html>

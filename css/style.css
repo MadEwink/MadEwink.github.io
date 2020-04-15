@@ -89,8 +89,8 @@ ul#nav-links > li {
 	border-radius: 15px;
 }
 
-#project-page {
-	padding: 5px;
+#main-content {
+	padding: 20px;
 	margin: 3px;
 	border-style: solid;
 	border-width: 3px;
@@ -137,50 +137,46 @@ ul#project-tags > li {
 	border-radius: 7px;
 }
 
-#project-page {
-	padding : 20px;
-}
-
-#project-page > h2 {
+#main-content > h2 {
 	margin: auto;
 	max-width: max-content;
 }
 
-#project-page > #paragraph-with-figure {
+#main-content > #paragraph-with-figure {
 	display: grid;
 	grid-template-columns: auto auto;
 }
 @media (max-width: 1110px) {
-	#project-page > #paragraph-with-figure {
+	#main-content > #paragraph-with-figure {
 		display: block;
 	}
 }
 
-#project-page > #paragraph-with-figure > * {
+#main-content > #paragraph-with-figure > * {
 	margin-top: auto;
 	margin-bottom: auto;
 }
 @media (max-width: 1110px) {
-	#project-page > #paragraph-with-figure > * {
+	#main-content > #paragraph-with-figure > * {
 		margin: auto;
 	}
 }
 
-#project-page > #paragraph-with-figure > .first {
+#main-content > #paragraph-with-figure > .first {
 	margin-right: 10px;
 }
 @media (max-width: 1110px) {
-	#project-page > #paragraph-with-figure > .first {
+	#main-content > #paragraph-with-figure > .first {
 		max-width: max-content;
 		margin: auto;
 	}
 }
 
-#project-page > #paragraph-with-figure > .second {
+#main-content > #paragraph-with-figure > .second {
 	margin-left: 10px;
 }
 @media (max-width: 1110px) {
-	#project-page > #paragraph-with-figure > .second {
+	#main-content > #paragraph-with-figure > .second {
 		max-width: max-content;
 		margin: auto;
 	}
@@ -218,7 +214,7 @@ ul#project-tags > li {
 	}
 }
 
-#project-page .figure {
+#main-content .figure {
 	padding: 10px;
 	max-width: 10rem;
 	border-style: solid;
@@ -226,7 +222,7 @@ ul#project-tags > li {
 	border-radius: 7px;
 }
 @media (max-width: 1110px) {
-	#project-page .figure {
+	#main-content .figure {
 		max-width : 30rem;
 		width: 30rem;
 	}
