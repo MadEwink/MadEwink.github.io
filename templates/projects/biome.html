@@ -11,15 +11,32 @@
 		<div id="content">
 			<div id="intro">
 				<h2>Biome</h2>
-				<p>Biome is a prototype 3D-roguelike made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation.</p>
+				<p>Biome is a prototype 3D-roguelike made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation. On this page you will find some details on this part.</p>
 			</div>
 			<div id="project-page">
 				<h2>Introduction</h2>
-				<p>Paragraph</p>
-				<h2>Tiles</h2>
-				<p>Describe tiles</p>
-				<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="testAnimate()">
-				{% include biome/one_tile.html %}
+				<p>The objectives were to dispose of a tool that would enable game designers to design maps for the game Biome. We decided to keep it as configurable as we could. However, some decisions were made and fixed. We wanted the world to be composed of several ring shaped regions called biomes.</p>
+				The objectives were :
+				<ul>
+					<li>have a big map</li>
+					<li>have configurable biome numbers</li>
+					<li>have configurable relief for each biome</li>
+					<li>enable dynamic relief modification</li>
+					<li>lessen the impact of the generation on the framerate</li>
+				</ul>
+				<h2>Coordinates system</h2>
+				<p>Since the world was going to be circular, I thought it would be interesting to use a hexagonal shaped grid instead of a traditional square grid, in order to smooth the generation. Lots of thanks to <a href="https://www.redblobgames.com/">Amit Patel</a> and his <a href="https://www.redblobgames.com/grids/hexagons/">Hexagonal grid reference</a> which made this a lot easier.</p>
+				<div id="paragraph-with-figure">
+					<div class="first">
+						<p>We then decided to cut the terrain in tiles. Those tiles would have configurable sizes, both concerning the hexagons size and the tile radius, as you can see in the figure. This makes it possible to change those parameters to generate a smaller or bigger map with different costs.</p>
+						<p>During the development, when facing a bug we often tried several tile radii in order to identify it, but we usually sticked at the value 17, except one of us who had difficulties running it on his computer, and used a smaller value.</p>
+					</div>
+					<div id="figure" class="second">
+						Radius<br/>
+						<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="testAnimate()">
+						{% include biome/one_tile.html %}
+					</div>
+				</div>
 			</div>
 		</div>
 		{% include footer.html %}
