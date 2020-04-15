@@ -220,6 +220,7 @@ ul#project-tags > li {
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 7px;
+	margin: auto;
 }
 @media (max-width: 1110px) {
 	#main-content .figure {

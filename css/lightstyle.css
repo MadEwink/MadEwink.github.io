@@ -55,6 +55,11 @@ ul#project-tags > li {
 	border-color: #ebebfa;
 }
 
+#main-content .figure {
+	background-color: #8585e0;
+	border-color: #ebebfa;
+}
+
 footer {
 	color: black;
 	border-color: #ebebfa;

@@ -6,15 +6,17 @@
 		<script src="/js/theme.js"></script>
 		<script src="/js/animations.js"></script>
 	</head>
-	<body onload=setStyleFromCookie()>
+	<body onload="setStyleFromCookie(); initFirstGeneration();">
 		{% include header.html %}
 		<div id="content">
 			<div id="intro">
 				<h2>Biome</h2>
 				<p>Biome is a prototype 3D-roguelike made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation. On this page you will find some details on this part.</p>
+				<p>You can check the <a href="https://gitlab.com/Atchoom/biome">source code</a>.</p>
 			</div>
 			<div id="main-content">
 				<h2>Introduction</h2>
+				<p>You can take a look at this <a href="https://www.youtube.com/watch?v=RRjrrGLzHUc">presentation video</a> realised at the end of the project.</p>
 				<p>The objectives were to dispose of a tool that would enable game designers to design maps for the game Biome. We decided to keep it as configurable as we could. However, some decisions were made and fixed. We wanted the world to be composed of several ring shaped regions called biomes.</p>
 				The objectives were :
 				<ul>
@@ -34,8 +36,23 @@
 					</div>
 					<div id="figure" class="second">
 						Radius<br/>
-						<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="testAnimate()">
+						<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="animateOneTile()">
 						{% include biome/one_tile.html %}
+					</div>
+				</div>
+				<div id="paragraph-with-figure">
+					<div id="figure" class="first">
+						<input type="range" min="0" max="20" value="0" class="slider" id="first-generation-slider" onInput="animateFirstGeneration()">
+						{% include biome/first_generation.html %}
+					</div>
+					<div class="second">
+						<p>We then assembled those tiles in order to create the terrain, which is generated in the following order :</p>
+						<ol>
+							<li>The center tile (on which the player begins)</li>
+							<li>All tiles of the first ring of tiles, turning counter-clockwise</li>
+							<li>Then the next ring, until a target ring is reached</li>
+						</ol>
+						<p>The number of rings generated is configurable.</p>
 					</div>
 				</div>
 			</div>

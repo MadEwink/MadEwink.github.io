@@ -1,7 +1,7 @@
 var first_objective = 1;
 var second_objective= 1;
 
-function testAnimate() {
+function animateOneTile() {
 	var value = document.getElementById("one-tile-slider").value;
 	var first_ring = document.getElementById("first-ring");
 	var second_ring = document.getElementById("second-ring");
@@ -19,7 +19,6 @@ function testAnimate() {
 	}
 	var id = setInterval(changeOpacity, 20);
 	function changeOpacity() {
-		console.log("test");
 		if (first_opacity == first_objective && second_opacity == second_objective) {
 			clearInterval(id);
 		} else {
@@ -47,4 +46,49 @@ function testAnimate() {
 	}
 }
 
+var tileObjectives = new Array(19);
+var tileOpacities = new Array(19);
+var tiles = new Array(19);
 
+for (var i = 0 ; i < tileObjectives.length ; i++) {
+	tileObjectives[i] = 0;
+}
+
+function initFirstGeneration() {
+	var svg = document.getElementById("first-generation");
+	for (var i = 0 ; i < tileObjectives.length ; i++) {
+		tiles[i] = svg.querySelector("#tile-"+i)
+		tiles[i].setAttribute("opacity", 0);
+	}
+}
+
+function animateFirstGeneration() {
+	var value = document.getElementById("first-generation-slider").value;
+	var svg = document.getElementById("first-generation");
+	for (var i = 0 ; i < tileObjectives.length ; i++) {
+		tileObjectives[i] = (i<value)?1:0;
+		tiles[i] = svg.querySelector("#tile-"+i)
+		tiles[i].setAttribute("fill", (i+1==value)?"red":"");
+		tileOpacities[i] = Number(tiles[i].getAttribute("opacity"));
+	}
+	var id = setInterval(changeOpacity, 20);
+	function changeOpacity() {
+		var finished = true;
+		for (var i = 0 ; i < tileObjectives.length ; i++) {
+			if (tileOpacities[i] < tileObjectives[i]) {
+				finished = false;
+				tileOpacities[i] += 0.1;
+				if (tileOpacities[i] > tileObjectives[i])
+					tileOpacities[i] = tileObjectives[i];
+			} else if (tileOpacities[i] > tileObjectives[i]) {
+				finished = false;
+				tileOpacities[i] -= 0.1;
+				if (tileOpacities[i] < tileObjectives[i])
+					tileOpacities[i] = tileObjectives[i];
+			}
+			tiles[i].setAttribute("opacity", tileOpacities[i]);
+		}
+		if (finished)
+			clearInterval(id);
+	}
+}
