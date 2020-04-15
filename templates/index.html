@@ -9,20 +9,7 @@
 		<script src="/js/theme.js"></script>
 	</head>
 	<body onload=setStyleFromCookie()>
-		<div id="header">
-			<div id ="nav">
-				<a href="/"><img id="nav-pp" src="/img/pp.png" alt="Profile picture"></a>
-				<br/>
-				<div id="nav-title">MadEwink</div>
-				<ul id="nav-links">
-					<li><a href="https://github.com/MadEwink">Github</a></li>
-					<li><a href="https://gitlab.com/MadEwink">Gitlab</a></li>
-					<li><a href="https://framagit.org/MadEwink">Framagit</a></li>
-				</ul>
-				<button class="theme" id="light-theme-button" style="display:none" onClick="setLightTheme()">Switch to light theme</button>
-				<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
-			</div>
-		</div>
+		{% include header.html %}
 		<div id="content">
 			<div id="intro">
 				<h2>Welcome !</h2>
@@ -174,10 +161,6 @@
 				--!>
 			</div>
 		</div>
-		<footer>
-			MadEwink<br/>
-			This site is open source.<br/>
-			It is hosted on github <a href = "https://github.com/MadEwink/MadEwink.github.io/">there</a>.
-		</footer>
+		{% include footer.html %}
 	</body>
 </html>
