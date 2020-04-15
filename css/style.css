@@ -107,6 +107,8 @@ a#project-title {
 }
 
 #project-description {
+	display: grid;
+	grid-template-columns: auto auto;
 }
 
 img#project-image {
