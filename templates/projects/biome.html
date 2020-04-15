@@ -19,74 +19,7 @@
 				<h2>Tiles</h2>
 				<p>Describe tiles</p>
 				<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="testAnimate()">
-				<div class="figure" id="one-tile">
-					<svg viewBox="-400 -500 800 1000">
-						<g fill="white" stroke="black">
-							<g id="center-hex">
-								<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-							</g>
-							<g id="first-ring" opacity="1">
-								<g transform="translate(0,-200)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-150,-100)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-150,100)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(0,200)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(150,100)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(150,-100)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-							</g>
-							<g id="second-ring" opacity="1">
-								<g transform="translate(0,-400)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-150,-300)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-300,-200)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-300,0)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-300,200)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(-150,300)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(0,400)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(150,300)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(300,200)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(300,0)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(300,-200)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-								<g transform="translate(150,-300)">
-									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
-								</g>
-							</g>
-						</g>
-					</svg>
-				</div>
-
+				{% include biome/one_tile.html %}
 			</div>
 		</div>
 		{% include footer.html %}
