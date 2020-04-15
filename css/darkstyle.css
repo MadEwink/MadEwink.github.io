@@ -36,6 +36,11 @@ button.theme {
 	border-color: #050514;
 }
 
+#project-page {
+	background-color: #1f1f7a;
+	border-color: #050514;
+}
+
 a#project-title {
 	color: white;
 	text-shadow: 1px 1px 3px #adadeb;

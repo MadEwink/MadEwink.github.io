@@ -1,0 +1,114 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>Biome | MadEwink portfolio</title>
+		<link href="/css/style.css" rel="stylesheet">
+		<link href="/css/darkstyle.css" title="Dark" rel="alternative stylesheet">
+		<link href="/css/lightstyle.css" title="Light" rel="alternative stylesheet">
+		<link rel="icon" href="/img/favicon.ico">
+		<script src="/js/theme.js"></script>
+		<script src="/js/animations.js"></script>
+	</head>
+	<body onload=setStyleFromCookie()>
+		<div id="header">
+			<div id ="nav">
+				<a href="/"><img id="nav-pp" src="/img/pp.png" alt="Profile picture"></a>
+				<br/>
+				<div id="nav-title">MadEwink's projects</div>
+				<ul id="nav-links">
+					<li><a href="https://github.com/MadEwink">Github</a></li>
+					<li><a href="https://gitlab.com/MadEwink">Gitlab</a></li>
+					<li><a href="https://framagit.org/MadEwink">Framagit</a></li>
+				</ul>
+				<button class="theme" id="light-theme-button" style="display:none" onClick="setLightTheme()">Switch to light theme</button>
+				<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
+			</div>
+		</div>
+		<div id="content">
+			<div id="intro">
+				<h2>Biome</h2>
+				<p>Biome is a prototype 3D-roguelike made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation.</p>
+			</div>
+			<div id="project-page">
+				<h2>Introduction</h2>
+				<p>Paragraph</p>
+				<h2>Tiles</h2>
+				<p>Describe tiles</p>
+				<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="testAnimate()">
+				<div class="figure" id="one-tile">
+					<svg viewBox="-400 -500 800 1000">
+						<g fill="white" stroke="black">
+							<g id="center-hex">
+								<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+							</g>
+							<g id="first-ring" opacity="1">
+								<g transform="translate(0,-200)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-150,-100)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-150,100)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(0,200)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(150,100)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(150,-100)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+							</g>
+							<g id="second-ring" opacity="1">
+								<g transform="translate(0,-400)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-150,-300)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-300,-200)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-300,0)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-300,200)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(-150,300)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(0,400)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(150,300)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(300,200)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(300,0)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(300,-200)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+								<g transform="translate(150,-300)">
+									<polygon points="100,0 50,100 -50,100 -100,0 -50,-100 50,-100"></polygon>
+								</g>
+							</g>
+						</g>
+					</svg>
+				</div>
+
+			</div>
+		</div>
+		<footer>
+			MadEwink<br/>
+			This site is open source.<br/>
+			It is hosted on github <a href = "https://github.com/MadEwink/MadEwink.github.io/">there</a>.
+		</footer>
+	</body>
+</html>
