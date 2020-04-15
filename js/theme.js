@@ -45,6 +45,8 @@ function setLightTheme() {
 }
 
 function setStyleFromCookie() {
+  // makes sure there is the light theme button if no theme is set
+  document.getElementById('light-theme-button').style="display:block";
   var cookies = document.cookie;
   if (cookies.length == 0) return;
   var array = cookies.split('; ');
@@ -55,8 +57,6 @@ function setStyleFromCookie() {
     var value_index = matches[0].indexOf('=');
     if (value_index == -1) return;
     var value = matches[0].substr(value_index+1);
-    // makes sure there is the light theme button if not theme is set
-    document.getElementById('light-theme-button').style="display:block";
     if (value.localeCompare("light") == 0)
       setLightTheme();
   }
