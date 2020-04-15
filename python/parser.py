@@ -43,6 +43,8 @@ def parser(templateName, resultName):
 def recursiveExplorer(currentDir):
     contentList = os.listdir(templateDir+currentDir)
     for content in contentList:
+        if content[0] in "_.":
+            continue
         if os.path.isdir(templateDir+currentDir+content):
             recursiveExplorer(currentDir+content+"/")
         else:
