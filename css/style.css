@@ -72,11 +72,12 @@ ul#nav-links > li {
 }
 
 #projects {
+	display: grid;
+	grid-template-columns: auto auto;
 }
-@media (min-width: 1110px) {
+@media (max-width: 1110px) {
 	#projects {
-		display: grid;
-		grid-template-columns: auto auto;
+		display: block;
 	}
 }
 
@@ -106,8 +107,6 @@ a#project-title {
 }
 
 #project-description {
-	display: grid;
-	grid-template-columns: auto auto;
 }
 
 img#project-image {
@@ -142,22 +141,81 @@ ul#project-tags > li {
 	padding : 20px;
 }
 
+#project-page > h2 {
+	margin: auto;
+	max-width: max-content;
+}
+
 #project-page > #paragraph-with-figure {
 	display: grid;
 	grid-template-columns: auto auto;
+}
+@media (max-width: 1110px) {
+	#project-page > #paragraph-with-figure {
+		display: block;
+	}
 }
 
 #project-page > #paragraph-with-figure > * {
 	margin-top: auto;
 	margin-bottom: auto;
 }
+@media (max-width: 1110px) {
+	#project-page > #paragraph-with-figure > * {
+		margin: auto;
+	}
+}
 
 #project-page > #paragraph-with-figure > .first {
 	margin-right: 10px;
 }
+@media (max-width: 1110px) {
+	#project-page > #paragraph-with-figure > .first {
+		max-width: max-content;
+		margin: auto;
+	}
+}
 
 #project-page > #paragraph-with-figure > .second {
 	margin-left: 10px;
+}
+@media (max-width: 1110px) {
+	#project-page > #paragraph-with-figure > .second {
+		max-width: max-content;
+		margin: auto;
+	}
+}
+
+.slider {
+	width: 100%;
+}
+@media (max-width: 1110px) {
+	.slider{
+		height: 50px;
+		background: none;
+	}
+}
+
+.slider::-webkit-slider-thumb {
+}
+@media (max-width: 1110px) {
+	.slider::-webkit-slider-thumb {
+		height: 50px;
+		width: 50px;
+		border-radius: 100%;
+	}
+}
+
+.slider::-moz-range-thumb {
+	height: 50px;
+	width: 50px;
+}
+@media (max-width: 1110px) {
+	.slider::-moz-range-thumb {
+		height: 50px;
+		width: 50px;
+		border-radius: 100%;
+	}
 }
 
 #project-page .figure {
@@ -166,6 +224,12 @@ ul#project-tags > li {
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 7px;
+}
+@media (max-width: 1110px) {
+	#project-page .figure {
+		max-width : 30rem;
+		width: 30rem;
+	}
 }
 
 footer {
