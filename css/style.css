@@ -295,7 +295,7 @@ g text#smaller {
 	font-size: 2em;
 }
 @media (max-width: 1110px) {
-	g text {
+	g text#smaller {
 		font-size : 1em;
 	}
 }
