@@ -69,3 +69,13 @@ footer {
 	border-color: #ebebfa;
 	background-color: #c2c2f0;
 }
+
+.game-projects-icon#project-image {
+	display: block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: url("/img/games_icon_light.png") no-repeat;
+	padding-left: 150px;
+	width: 150px;
+	height: 156px;
+}
