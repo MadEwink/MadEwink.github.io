@@ -41,6 +41,10 @@ button.theme {
 	border-color: #ebebfa;
 }
 
+#main-content > img {
+	border-color: #ebebfa;
+}
+
 a#project-title {
 	color: black;
 	text-shadow: 1px 1px 3px #0f0f3d;
