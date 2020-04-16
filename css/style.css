@@ -14,7 +14,7 @@ body {
 	}
 }
 
-#header {
+header {
 	border-bottom-style: solid;
 	padding: 10px;
 	box-sizing: border-box;
