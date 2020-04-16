@@ -26,7 +26,7 @@
 					<li>enable dynamic relief modification</li>
 					<li>lessen the impact of the generation on the framerate</li>
 				</ul>
-				<h2>Coordinates system</h2>
+				<h2>Coordinates system and initial generation</h2>
 				<p>Since the world was going to be circular, I thought it would be interesting to use a hexagonal shaped grid instead of a traditional square grid, in order to smooth the generation. Lots of thanks to <a href="https://www.redblobgames.com/">Amit Patel</a> and his <a href="https://www.redblobgames.com/grids/hexagons/">Hexagonal grid reference</a> which made this a lot easier.</p>
 				<div id="paragraph-with-figure">
 					<div class="first">
@@ -46,15 +46,53 @@
 						{% include biome/first_generation.html %}
 					</div>
 					<div class="second">
-						<p>We then assembled those tiles in order to create the terrain, which is generated in the following order :</p>
+						<p>We then assembled those tiles in order to create the terrain, which begin area is generated in the following order :</p>
 						<ol>
 							<li>The center tile (on which the player begins)</li>
 							<li>All tiles of the first ring of tiles, turning counter-clockwise</li>
 							<li>Then the next ring, until a target ring is reached</li>
 						</ol>
-						<p>The number of rings generated is configurable.</p>
+						<p>Drag the slider to see each step of the generation.</p>
+						<p>The number of rings generated for the begin area is configurable.</p>
 					</div>
 				</div>
+				<div id="three-columns">
+					<div class="first">
+						<p>The relief of the terrain is determined through a Perlin Noise. Each hexagon has a height, which is computed through mixing Perlin Noises.</p>
+						<p>Using Perlin Noise makes points that are spatially close have similar heights. This was perfect, since we wanted a terrain with moderate local height variations.</p>
+					</div>
+					<div class="second">
+						{% include biome/height_values.html %}
+					</div>
+					<div class="third">
+						<p>Each corner of the hexagon is then attributed the mean of the three surrounding hexagons.</p>
+						<p>You can see an example on the figure (the values here are arbitrary and were not computed from a real Perlin Noise).</p>
+					</div>
+				</div>
+				<p>Since we only need the hexagon height value of the neighbors before creating the 3D model of one tile, we first generate all neighbor tile hexagon heights, then calculate each points height for the 3D model. I will describe this a bit more when talking about object generation.</p>
+				<p>During the game, when the player moves, the position is tracked in order to load only the tiles that are close to this position. When the player goes to a place where tiles were not generated, those are generated as the games asks to load them. With this system, we were able to have a big map, that is only loaded locally and that does not need too much time to build before the game starts.</p>
+				<h2>Object Generation</h2>
+				<p>Once we had a terrain, we wanted to place some objects on it. We divided objects into two categories : small objects (trees, bushes, rocks, columns, etc) that can be placed quite anywhere, and big objects (buildings, bigger rocks, ruins, etc) that need a flat terrain underneath.</p>
+				<p>Concerning big objects, we thought it would be quite difficult to look for a flat space on the map, so we decided we would flatten the terrain before placing the object. We thus placed the object generation step between the hexagon height attribution, and the 3D model construction, in order to be able to modify existing height before creating the model. However, one object could be placed near the border of a tile, and thus need to alter the neighbor tiles height data, and placing space occupation indicators on them (we used it to prevent objects from spawing too close from another).</p>
+				<div id="paragraph-with-figure">
+					<div class="first">
+						<p>One the same idea, one tile could place an object close to its neighbour located on a ring closer to the center during the initial generation. The generation order was thus altered as such :</p>
+						<ol>
+							<li><em id="blue">Attribute height</em> to the center tile (which can be considered as ring zero)</li>
+							<li><em id="blue">Attribute height</em> to the first ring</li>
+							<li><em id="red">Attribute object location</em> on the center tile</li>
+							<li><em id="blue">Attribute height</em> to the next ring</li>
+							<li><em id="red">Attribute object location</em> of the current ring</li>
+							<li><em id="green">Compute 3D model</em> of previous ring</li>
+							<li>Switch to the next ring and repeat from step 4</li>
+						</ol>
+						<p>Each step for each ring is still done on every tile, as shown before. With this method, we leave some rings with only height attributions, that will have their objects and 3D model generated as the player comes close.</p>
+						<p>You can drag the slider to observe steps from 1 to 6 on the figure. See how there always will be a two tiles thick crown partially generated around the fully generated area.</p>
+					</div>
+					<div class="second">
+						<input type="range" min="0" max="6" value="0" class="slider" id="object-generation-slider" onInput="animateObjectGeneration()">
+						{% include biome/object_generation.html %}
+					</div>
 			</div>
 		</div>
 		{% include footer.html %}

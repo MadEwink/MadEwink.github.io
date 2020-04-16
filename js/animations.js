@@ -92,3 +92,50 @@ function animateFirstGeneration() {
 			clearInterval(id);
 	}
 }
+
+function animateObjectGeneration() {
+	var value = Number(document.getElementById("object-generation-slider").value);
+	var svg = document.getElementById("object-generation");
+	var centerTile = svg.querySelector("#tile-0");
+	var firstRing = svg.querySelector("#ring-1");
+	var secondRing = svg.querySelector("#ring-2");
+	switch(value) {
+		case 0:
+			centerTile.setAttribute("fill", "white");
+			firstRing.setAttribute("fill", "white");
+			secondRing.setAttribute("fill", "white");
+			break;
+		case 1:
+			centerTile.setAttribute("fill", "grey");
+			firstRing.setAttribute("fill", "white");
+			secondRing.setAttribute("fill", "white");
+			break;
+		case 2:
+			centerTile.setAttribute("fill", "grey");
+			firstRing.setAttribute("fill", "grey");
+			secondRing.setAttribute("fill", "white");
+			break;
+		case 3:
+			centerTile.setAttribute("fill", "red");
+			firstRing.setAttribute("fill", "grey");
+			secondRing.setAttribute("fill", "white");
+			break;
+		case 4:
+			centerTile.setAttribute("fill", "red");
+			firstRing.setAttribute("fill", "grey");
+			secondRing.setAttribute("fill", "grey");
+			break;
+		case 5:
+			centerTile.setAttribute("fill", "red");
+			firstRing.setAttribute("fill", "red");
+			secondRing.setAttribute("fill", "grey");
+			break;
+		case 6:
+			centerTile.setAttribute("fill", "green");
+			firstRing.setAttribute("fill", "red");
+			secondRing.setAttribute("fill", "grey");
+			break;
+		default:
+			break;
+	}
+}
