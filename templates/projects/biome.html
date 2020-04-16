@@ -6,7 +6,7 @@
 		<script src="/js/theme.js"></script>
 		<script src="/js/animations.js"></script>
 	</head>
-	<body onload="setStyleFromCookie(); initFirstGeneration();">
+	<body onload="setStyleFromCookie(); initAllAnimations();">
 		{% include header.html %}
 		<div id="content">
 			<div id="intro">
@@ -37,14 +37,15 @@
 						<p>You might see it on the figure, the hexagons are not exactly regular. In order to ease some computations, I made them a bit higher. Thinking about it some time later, I reckon this might have cause some problems we faced during the development.</p>
 					</div>
 					<div id="figure" class="second">
-						Radius<br/>
-						<input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="animateOneTile()">
+						Radius : <span id="one-tile-value">2</span><br/>
+						<span class="js-only" style="visibility:hidden;"><input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="animateOneTile()"></span>
 						{% include biome/one_tile.html %}
 					</div>
 				</div>
 				<div id="paragraph-with-figure">
 					<div id="figure" class="first">
-						<input type="range" min="0" max="20" value="0" class="slider" id="first-generation-slider" onInput="animateFirstGeneration()">
+						Step : <span id="first-generation-value">20</span><br/>
+						<span  class="js-only" style="visibility:hidden;"><input type="range" min="0" max="20" value="20" class="slider" id="first-generation-slider" onInput="animateFirstGeneration()"></span>
 						{% include biome/first_generation.html %}
 					</div>
 					<div class="second">
@@ -54,7 +55,7 @@
 							<li>All tiles of the first ring of tiles, turning counter-clockwise</li>
 							<li>Then the next ring, until a target ring is reached</li>
 						</ol>
-						<p>Drag the slider to see each step of the generation.</p>
+						<p style="visibility:hidden" class="js-only">Drag the slider to see each step of the generation.</p>
 						<p>The number of rings generated for the begin area is configurable.</p>
 					</div>
 				</div>
@@ -63,7 +64,7 @@
 						<p>The relief of the terrain is determined through a Perlin Noise. Each hexagon has a height, which is computed through mixing Perlin Noises.</p>
 						<p>Using Perlin Noise makes points that are spatially close have similar heights. This was perfect, since we wanted a terrain with moderate local height variations.</p>
 					</div>
-					<div class="second">
+					<div class="second" id="figure">
 						{% include biome/height_values.html %}
 					</div>
 					<div class="third">
@@ -89,10 +90,11 @@
 							<li>Switch to the next ring and repeat from step 4</li>
 						</ol>
 						<p>Each step for each ring is still done on every tile, as shown before. With this method, we leave some rings with only height attributions, that will have their objects and 3D model generated as the player comes close.</p>
-						<p>You can drag the slider to observe steps from 1 to 6 on the figure. See how there always will be a two tiles thick crown partially generated around the fully generated area.</p>
+						<p><span style="display:none" class="js-only">You can drag the slider to observe steps from 1 to 6 on the figure. </span>See how there always will be a two tiles thick crown partially generated around the fully generated area.</p>
 					</div>
-					<div class="second">
-						<input type="range" min="0" max="6" value="0" class="slider" id="object-generation-slider" onInput="animateObjectGeneration()">
+					<div class="second" id="figure">
+						Step : <span id="object-generation-value">6</span><br/>
+						<span  class="js-only" style="visibility:hidden;"><input type="range" min="0" max="6" value="6" class="slider" id="object-generation-slider" onInput="animateObjectGeneration()"></span>
 						{% include biome/object_generation.html %}
 					</div>
 				</div>

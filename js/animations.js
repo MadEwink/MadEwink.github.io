@@ -1,8 +1,27 @@
 var first_objective = 1;
 var second_objective= 1;
 
+function initAllAnimations() {
+	displayJSOnly();
+	initOneTile();
+	initFirstGeneration();
+	initObjectGeneration();
+}
+
+function displayJSOnly() {
+	var elements = document.getElementsByClassName("js-only");
+	for (var i = 0 ; i < elements.length ; i++) {
+		elements[i].removeAttribute("style");
+	}
+}
+
+function initOneTile() {
+}
+
 function animateOneTile() {
 	var value = document.getElementById("one-tile-slider").value;
+	var valueIndicator = document.getElementById("one-tile-value");
+	valueIndicator.innerHTML = value;
 	var first_ring = document.getElementById("first-ring");
 	var second_ring = document.getElementById("second-ring");
 	var first_opacity = Number(first_ring.getAttribute("opacity"));
@@ -60,10 +79,16 @@ function initFirstGeneration() {
 		tiles[i] = svg.querySelector("#tile-"+i)
 		tiles[i].setAttribute("opacity", 0);
 	}
+	var slider = document.getElementById("first-generation-slider");
+	slider.value = 0;
+	var valueIndicator = document.getElementById("first-generation-value");
+	valueIndicator.innerHTML = slider.value;
 }
 
 function animateFirstGeneration() {
 	var value = document.getElementById("first-generation-slider").value;
+	var valueIndicator = document.getElementById("first-generation-value");
+	valueIndicator.innerHTML = value;
 	var svg = document.getElementById("first-generation");
 	for (var i = 0 ; i < tileObjectives.length ; i++) {
 		tileObjectives[i] = (i<value)?1:0;
@@ -93,8 +118,23 @@ function animateFirstGeneration() {
 	}
 }
 
+function initObjectGeneration() {
+	var slider = document.getElementById("object-generation-slider");
+	slider.value = 0;
+	var valueIndicator = document.getElementById("object-generation-value");
+	valueIndicator.innerHTML = slider.value;
+	var svg = document.getElementById("object-generation");
+	var centerTile = svg.querySelector("#tile-0");
+	var firstRing = svg.querySelector("#ring-1");
+	var secondRing = svg.querySelector("#ring-2");
+	centerTile.setAttribute("fill", "white");
+	firstRing.setAttribute("fill", "white");
+	secondRing.setAttribute("fill", "white");
+}
 function animateObjectGeneration() {
 	var value = Number(document.getElementById("object-generation-slider").value);
+	var valueIndicator = document.getElementById("object-generation-value");
+	valueIndicator.innerHTML = value;
 	var svg = document.getElementById("object-generation");
 	var centerTile = svg.querySelector("#tile-0");
 	var firstRing = svg.querySelector("#ring-1");
