@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<title>MadEwink portfolio</title>
-		{% include links.html %}
+		{% include file_name=links.html %}
 		<script src="/js/theme.js"></script>
 	</head>
 	<body onload=setStyleFromCookie()>
-		{% include header.html %}
+		{% include file_name=header.html %}
 		<div id="content">
 			<div id="intro">
 				<h2>Welcome !</h2>
@@ -158,6 +158,6 @@
 				--!>
 			</div>
 		</div>
-		{% include footer.html %}
+		{% include file_name=footer.html %}
 	</body>
 </html>

@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<title>About | MadEwink portfolio</title>
-		{% include links.html %}
+		{% include file_name=links.html %}
 		<script src="/js/theme.js"></script>
 	</head>
 	<body onload=setStyleFromCookie()>
-		{% include header.html %}
+		{% include file_name=header.html %}
 		<div id="content">
 			<div id="intro">
 				<h2>About this site</h2>
@@ -27,6 +27,6 @@
 					<li>My girlfriend, who beta tests my site while I'm doing it and who has to put up with me while I am doing it.</li>
 			</div>
 		</div>
-		{% include footer.html %}
+		{% include file_name=footer.html %}
 	</body>
 </html>

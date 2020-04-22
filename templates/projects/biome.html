@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<title>Biome | MadEwink portfolio</title>
-		{% include links.html %}
+		{% include file_name=links.html %}
 		<script src="/js/theme.js"></script>
 		<script src="/js/animations.js"></script>
 	</head>
 	<body onload="setStyleFromCookie(); initAllAnimations();">
-		{% include header.html %}
+		{% include file_name=header.html %}
 		<div id="content">
 			<div id="intro">
 				<h2>Biome</h2>
@@ -39,14 +39,14 @@
 					<div id="figure" class="second">
 						Radius : <span id="one-tile-value">2</span><br/>
 						<span class="js-only" style="visibility:hidden;"><input type="range" min="0" max="2" value="2" class="slider" id="one-tile-slider" onInput="animateOneTile()"></span>
-						{% include biome/one_tile.html %}
+						{% include file_name=biome/one_tile.html %}
 					</div>
 				</div>
 				<div id="paragraph-with-figure">
 					<div id="figure" class="first">
 						Step : <span id="first-generation-value">20</span><br/>
 						<span  class="js-only" style="visibility:hidden;"><input type="range" min="0" max="20" value="20" class="slider" id="first-generation-slider" onInput="animateFirstGeneration()"></span>
-						{% include biome/first_generation.html %}
+						{% include file_name=biome/first_generation.html %}
 					</div>
 					<div class="second">
 						<p>We then assembled those tiles in order to create the terrain, which begin area is generated in the following order :</p>
@@ -65,7 +65,7 @@
 						<p>Using Perlin Noise makes points that are spatially close have similar heights. This was perfect, since we wanted a terrain with moderate local height variations.</p>
 					</div>
 					<div class="second" id="figure">
-						{% include biome/height_values.html %}
+						{% include file_name=biome/height_values.html %}
 					</div>
 					<div class="third">
 						<p>Each corner of the hexagon is then attributed the mean of the three surrounding hexagons.</p>
@@ -95,7 +95,7 @@
 					<div class="second" id="figure">
 						Step : <span id="object-generation-value">6</span><br/>
 						<span  class="js-only" style="visibility:hidden;"><input type="range" min="0" max="6" value="6" class="slider" id="object-generation-slider" onInput="animateObjectGeneration()"></span>
-						{% include biome/object_generation.html %}
+						{% include file_name=biome/object_generation.html %}
 					</div>
 				</div>
 				<p>With those modifications, we made it possible to implement dynamic modification of the terrain, but we did not use it. A great application would be to adapt the terrain depending on how the player behaves, and how difficult the game is, in a similar way as the Gameplay/Ennemies team did for enemies.</p>
@@ -105,6 +105,6 @@
 				<p>You can see another member's own page for this project <a href="https://matthias4217.github.io/project/biome/">here</a>.</p>
 			</div>
 		</div>
-		{% include footer.html %}
+		{% include file_name=footer.html %}
 	</body>
 </html>

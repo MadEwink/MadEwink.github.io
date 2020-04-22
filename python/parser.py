@@ -10,20 +10,63 @@ def isCodeLine(line):
     contents = line.split()
     return (len(contents) != 0 and contents[0] == "{%")
 
-def interpreteCode(line, result):
+def findNextArgument(line, index):
+    last_space = index
+    argument = ""
+    while (line[index] != '='):
+        if (line[index] == ' '):
+            last_space = index
+        index += 1
+    argument = line[last_space+1:index]
+    return (argument,index)
+
+def readArgumentValue(line, index):
+    #index is on space
+    begin_index = index + 1
+    end_index = begin_index+1
+    value = ""
+    end_char = ' '
+    if (line[begin_index] == '"'):
+        begin_index += 1
+        end_char = '"'
+    while (line[end_index] != end_char):
+        end_index += 1
+    return (line[begin_index:end_index], end_index)
+
+
+def parseCommandArguments(line):
+    argument_number = line.count('=')
+    index = 0
+    arguments = dict()
+    for i in range(argument_number):
+        argument,index = findNextArgument(line, index)
+        value,index = readArgumentValue(line, index)
+        arguments[argument] = value
+    return arguments
+
+def hasParameter(line):
+    return line.find("{{") != -1
+
+def replaceParameter(line, command_arguments):
+    # TODO
+    return;
+
+def interpreteCode(line, result, command_arguments):
     contents = line.split()
     assert(len(contents) >= 3)
     assert(contents[0] == "{%")
     instruction = contents[1]
     if instruction == "include":
-        assert(len(contents) == 4)
-        fileName = contents[2]
+        fileName = command_arguments['file_name']
         include = open(includeDir+fileName)
+        indentation = line.split('{')[0]
         while True:
             s = include.readline()
             if (s == ''):
                 break;
-            result.write(s)
+            if (hasParameter(s)):
+                s = replaceParameter(s, command_arguments)
+            result.write(indentation+s)
         include.close()
 
 def parser(templateName, resultName):
@@ -36,7 +79,10 @@ def parser(templateName, resultName):
         if not isCodeLine(s):
             result.write(s)
         else:
-            interpreteCode(s, result)
+            # parse command_arguments
+            # /!\ an argument may be composed of strings with spaces !!
+            command_arguments = parseCommandArguments(s)
+            interpreteCode(s, result, command_arguments)
     template.close()
     result.close()
 

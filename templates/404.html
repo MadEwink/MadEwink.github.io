@@ -2,17 +2,17 @@
 <html>
 	<head>
 		<title>Not found | MadEwink portfolio</title>
-		{% include links.html %}
+		{% include file_name=links.html %}
 		<script src="/js/theme.js"></script>
 	</head>
 	<body onload=setStyleFromCookie()>
-		{% include header.html %}
+		{% include file_name=header.html %}
 		<div id="content">
 			<div id="intro">
 				<h2>Not found !</h2>
 				<p>The page you were looking for was not found. Please return to the previous page or to the <a href="/">main page</a>. Please contact me if you think this is a mistake or if there is a broken link. You can also <a href="https://github.com/MadEwink/MadEwink.github.io/issues/new">open an issue</a> on the <a href="https://github.com/MadEwink/MadEwink.github.io/">github repository</a>.</p>
 			</div>
 		</div>
-		{% include footer.html %}
+		{% include file_name=footer.html %}
 	</body>
 </html>
