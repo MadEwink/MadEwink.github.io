@@ -34,6 +34,11 @@ img#nav-pp {
 	font-size: 2em;
 }
 
+#nav-tail {
+	display: grid;
+	grid-template-columns: auto max-content;
+}
+
 button.theme {
 	padding: 8px;
 	border-style: solid;
@@ -46,15 +51,31 @@ button.theme {
 	}
 }
 
-ul#nav-links {
+ul.nav-links {
 	list-style-type: none;
 	text-align: right;
 }
 
-ul#nav-links > li {
+ul.nav-links > li {
 	font-size: 1.2em;
 	display: inline;
 	margin: 10px;
+}
+
+#nav-tail-links {
+	max-width: max-content;
+	margin: 5px;
+	padding: 10px;
+	border-style: solid;
+	border-radius: 50px;
+}
+
+#nav-tail-links li {
+	margin: 5px;
+}
+
+#nav-tail-links a {
+	text-decoration: none;
 }
 
 #intro {

@@ -48,8 +48,15 @@ def hasParameter(line):
     return line.find("{{") != -1
 
 def replaceParameter(line, command_arguments):
-    # TODO
-    return;
+    line_beginning = line.split("{{")[0]
+    line_end = line.split("}}")[1]
+    parameter = line.split("{{")[1].split("}}")[0]
+    argument,index = findNextArgument(parameter, 0)
+    # default value, if the argument was not specified in the command
+    value,index = readArgumentValue(parameter, index)
+    if (argument in command_arguments):
+        value = command_arguments[argument]
+    return line_beginning + value + line_end;
 
 def interpreteCode(line, result, command_arguments):
     contents = line.split()

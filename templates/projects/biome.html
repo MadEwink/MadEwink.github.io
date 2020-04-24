@@ -7,12 +7,11 @@
 		<script src="/js/animations.js"></script>
 	</head>
 	<body onload="setStyleFromCookie(); initAllAnimations();">
-		{% include file_name=header.html %}
+		{% include file_name=header.html title="Biome" %}
 		<div id="content">
 			<div id="intro">
-				<h2>Biome</h2>
-				<p>Biome is a prototype 3D-roguelike made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation. On this page you will find some details on this part.</p>
-				<p>You can check the <a href="https://gitlab.com/Atchoom/biome">source code</a>.</p>
+				<p>Biome is a 3D-roguelike prototype made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation. On this page you will find some details on this part.</p>
+				<p>You can check the <a href="https://gitlab.com/Atchoom/biome">source code here</a>.</p>
 			</div>
 			<div id="main-content">
 				<img src="/img/biome_image.png" alt="Biome image">
@@ -34,7 +33,7 @@
 					<div class="first">
 						<p>We then decided to cut the terrain in tiles. Those tiles would have configurable sizes, both concerning the hexagons size and the tile radius, as you can see in the figure. This makes it possible to change those parameters to generate a smaller or bigger map with different costs.</p>
 						<p>During the development, when facing a bug we often tried several tile radii in order to identify it, but we usually sticked at the value 17, except one of us who had difficulties running it on his computer, and used a smaller value.</p>
-						<p>You might see it on the figure, the hexagons are not exactly regular. In order to ease some computations, I made them a bit higher. Thinking about it some time later, I reckon this might have cause some problems we faced during the development.</p>
+						<p>You might see it on the figure, the hexagons are not exactly regular. In order to ease some computations, I made them a bit higher. Thinking about it some time later, I reckon this might have caused some problems we faced during the development.</p>
 					</div>
 					<div id="figure" class="second">
 						Radius : <span id="one-tile-value">2</span><br/>
@@ -49,14 +48,14 @@
 						{% include file_name=biome/first_generation.html %}
 					</div>
 					<div class="second">
-						<p>We then assembled those tiles in order to create the terrain, which begin area is generated in the following order :</p>
+						<p>We then assembled those tiles in order to create the terrain, whose starting area is generated in the following order :</p>
 						<ol>
 							<li>The center tile (on which the player begins)</li>
 							<li>All tiles of the first ring of tiles, turning counter-clockwise</li>
 							<li>Then the next ring, until a target ring is reached</li>
 						</ol>
 						<p style="visibility:hidden" class="js-only">Drag the slider to see each step of the generation.</p>
-						<p>The number of rings generated for the begin area is configurable.</p>
+						<p>The number of rings generated for the starting area is configurable.</p>
 					</div>
 				</div>
 				<div id="three-columns">
@@ -76,10 +75,10 @@
 				<p>During the game, when the player moves, the position is tracked in order to load only the tiles that are close to this position. When the player goes to a place where tiles were not generated, those are generated as the games asks to load them. With this system, we were able to have a big map, that is only loaded locally and that does not need too much time to build before the game starts.</p>
 				<h2>Object Generation</h2>
 				<p>Once we had a terrain, we wanted to place some objects on it. We divided objects into two categories : small objects (trees, bushes, rocks, columns, etc) that can be placed quite anywhere, and big objects (buildings, bigger rocks, ruins, etc) that need a flat terrain underneath.</p>
-				<p>Concerning big objects, we thought it would be quite difficult to look for a flat space on the map, so we decided we would flatten the terrain before placing the object. We thus placed the object generation step between the hexagon height attribution, and the 3D model construction, in order to be able to modify existing height before creating the model. However, one object could be placed near the border of a tile, and thus need to alter the neighbor tiles height data, and placing space occupation indicators on them (we used it to prevent objects from spawing too close from another).</p>
+				<p>Concerning big objects, we thought it would be quite difficult to look for a flat space on the map, so we decided we would flatten the terrain before placing the object. We thus placed the object generation step between the hexagon height attribution, and the 3D model construction, in order to be able to modify existing height before creating the model. However, one object could be placed near the border of a tile, and thus need to alter the neighbor tiles height data, and placing space occupation indicators on them (we used it to prevent objects from spawning too close to each other).</p>
 				<div id="paragraph-with-figure">
 					<div class="first">
-						<p>One the same idea, one tile could place an object close to its neighbour located on a ring closer to the center during the initial generation. The generation order was thus altered as such :</p>
+						<p>IIn same idea, one tile could place an object close to its neighbour located on a ring closer to the center during the initial generation. The generation order was thus altered as such :</p>
 						<ol>
 							<li><em id="blue">Attribute height</em> to the center tile (which can be considered as ring zero)</li>
 							<li><em id="blue">Attribute height</em> to the first ring</li>
@@ -101,7 +100,7 @@
 				<p>With those modifications, we made it possible to implement dynamic modification of the terrain, but we did not use it. A great application would be to adapt the terrain depending on how the player behaves, and how difficult the game is, in a similar way as the Gameplay/Ennemies team did for enemies.</p>
 				<h2>Other stuff</h2>
 				<p>At the end of the project, we had some documents to create in order to present our project. There was an oral presentation (and its support), the <a href="https://www.youtube.com/watch?v=RRjrrGLzHUc">presentation video</a>, a poster, an image which represents the project, that you can see at the top of this page, a design document, a few situational short descriptions, and a build of the project (google drive links : <a href="https://drive.google.com/drive/folders/1FabYI5S_Gg3qXji2IRcAdgajFSRaVE0j?usp=sharing">windows</a>, <a href="https://drive.google.com/drive/folders/1aaX3BJHE8PcKgXqyBLAymf-x4hcIHIwE?usp=sharing">linux</a>).</p>
-				<p>I made the video : we all captured clips of scenes we thought represented well our work on this project. One made the music. Then I assembled the clips and the music in a video, using Blender. I also made a part of the image : I assembled the screens a friend took of generated terrain (from an orthographic side view), assembled them, cleared artifacts due to the orthographic view, and smoothed the transitions between terrains. My firend then added the hexagonal mosaic effect and the texts.</p>
+				<p>I made the video : we all captured clips of scenes we thought represented well our work on this project. One of us made the music. Then I assembled the clips and the music in a video, using Blender. I also made a part of the image : I assembled the screens a friend took of generated terrain (from an orthographic side view), assembled them, cleared artifacts due to the orthographic view, and smoothed the transitions between terrains. My firend then added the hexagonal mosaic effect and the texts.</p>
 				<p>You can see another member's own page for this project <a href="https://matthias4217.github.io/project/biome/">here</a>.</p>
 			</div>
 		</div>

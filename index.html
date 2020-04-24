@@ -14,13 +14,22 @@
 				<a href="/"><img id="nav-pp" src="/img/pp.png" alt="Profile picture"></a>
 				<br/>
 				<div id="nav-title">MadEwink</div>
-				<ul id="nav-links">
+				<ul class="nav-links">
 					<li><a href="https://github.com/MadEwink">Github</a></li>
 					<li><a href="https://gitlab.com/MadEwink">Gitlab</a></li>
 					<li><a href="https://framagit.org/MadEwink">Framagit</a></li>
 				</ul>
-				<button class="theme" id="light-theme-button" style="display:none" onClick="setLightTheme()">Switch to light theme</button>
-				<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
+				<div id="nav-tail">
+					<div>
+						<button class="theme" id="light-theme-button" style="display:none" onClick="setLightTheme()">Switch to light theme</button>
+						<button class="theme" id="dark-theme-button" style="display:none" onClick="setDarkTheme()">Switch to dark theme</button>
+					</div>
+					<ul class="nav-links" id="nav-tail-links">
+						<li><a href="/">Home</a></li>
+						<li><a href="/projects">Projects</a></li>
+						<li><a href="/about.html">About</a></li>
+					</ul>
+				</div>
 			</div>
 		</header>
 		<div id="content">
@@ -30,9 +39,23 @@
 			</div>
 			<div id="projects">
 				<div id="project-post">
-					<h2 id="project-title"><a id="project-title" href="https://gitlab.com/Atchoom/biome">Biome</a></h2>
+					<h2 id="project-title"><a id="project-title" href="https://gitlab.com/MadEwink/ld46">Polygons of Light</a></h2>
 					<div id="project-description">
-						<a href="https://gitlab.com/Atchoom/biome"><img id="project-image" src="/img/biome_icon.png" alt="Biome icon"></a>
+						<a href="https://gitlab.com/MadEwink/ld46"><img id="project-image" src="/img/polygons_of_light_icon.png" alt="Polygons of Light icon"></a>
+						<p>Polygons of Light is a game created in 72h during the 46th edition of the <a href="https://ldjam.com/events/ludum-dare/46">Ludum Dare</a>, by a team of three students, with some help for the music and a bit of game design. Playable on browser <a href="https://prez-cell.itch.io/polygons-of-light">on itch.io</a>.</p>
+					</div>
+					<ul id="project-tags">
+						<li>Unity</li>
+						<li>C#</li>
+						<li>Game Jam</li>
+						<li>Ludum Dare</li>
+						<li>Game dev</li>
+					</ul>
+				</div>
+				<div id="project-post">
+					<h2 id="project-title"><a id="project-title" href="/projects/biome.html">Biome</a></h2>
+					<div id="project-description">
+						<a href="projects/biome.html"><img id="project-image" src="/img/biome_icon.png" alt="Biome icon"></a>
 						<p>Biome is a prototype 3D-roguelike made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation.</p>
 					</div>
 					<ul id="project-tags">

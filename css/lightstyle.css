@@ -1,3 +1,8 @@
+* {
+	border-color: #ebebfa;
+	color: black;
+}
+
 body {
 	background-image: url("/img/hex_bg.png");
 }
@@ -7,42 +12,27 @@ a {
 }
 
 header {
-	color: black;
-	border-color: #ebebfa;
 	background-color: #c2c2f0;
 }
 
-img#nav-pp {
-	border-color: #ebebfa;
+button.theme {
+	background-color: #7070db;
 }
 
-button.theme {
-	color: black;
+#nav-tail-links {
 	background-color: #7070db;
-	border-color: #ebebfa;
 }
 
 #intro {
 	background-color : #9999e6;
-	border-color: #ebebfa;
-}
-
-#content {
-	color: black;
 }
 
 #project-post {
 	background-color: #7070db;
-	border-color: #ebebfa;
 }
 
 #main-content {
 	background-color: #7070db;
-	border-color: #ebebfa;
-}
-
-#main-content > img {
-	border-color: #ebebfa;
 }
 
 a#project-title {
@@ -50,23 +40,15 @@ a#project-title {
 	text-shadow: 1px 1px 3px #0f0f3d;
 }
 
-img#project-image {
-	border-color: #ebebfa;
-}
-
 ul#project-tags > li {
 	background-color: #8585e0;
-	border-color: #ebebfa;
 }
 
 #main-content #figure {
 	background-color: #8585e0;
-	border-color: #ebebfa;
 }
 
 footer {
-	color: black;
-	border-color: #ebebfa;
 	background-color: #c2c2f0;
 }
 

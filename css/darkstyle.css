@@ -1,3 +1,8 @@
+* {
+	border-color: #050514;
+	color: white;
+}
+
 body {
 	background-image: url("/img/hex_bg.png");
 }
@@ -7,42 +12,27 @@ a {
 }
 
 header {
-	color: white;
-	border-color: #050514;
 	background-color: #0a0a29;
 }
 
-img#nav-pp {
-	border-color: #050514;
+button.theme {
+	background-color: #1f1f7a;
 }
 
-button.theme {
-	color: white;
+#nav-tail-links {
 	background-color: #1f1f7a;
-	border-color: #050514;
 }
 
 #intro {
 	background-color : #141452;
-	border-color: #050514;
-}
-
-#content {
-	color: white;
 }
 
 #project-post {
 	background-color: #1f1f7a;
-	border-color: #050514;
 }
 
 #main-content {
 	background-color: #1f1f7a;
-	border-color: #050514;
-}
-
-#main-content > img {
-	border-color: #050514;
 }
 
 a#project-title {
@@ -50,22 +40,14 @@ a#project-title {
 	text-shadow: 1px 1px 3px #adadeb;
 }
 
-img#project-image {
-	border-color: #050514;
-}
-
 ul#project-tags > li {
 	background-color: #191966;
-	border-color: #050514;
 }
 
 #main-content #figure {
 	background-color: #191966;
-	border-color: #050514;
 }
 
 footer {
-	color: white;
-	border-color: #050514;
 	background-color: #0a0a29;
 }
