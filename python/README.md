@@ -14,6 +14,6 @@ The parser will ignore all directory or file which name begins with '.' or '_'.
 
 ## Available commands
 
-- [x] include : `{% include filename %}` include a file
+- [x] include : `{% include file_name=filename arg=val arg2="value with spaces" %}` include a file, replacing all `{{ arg=def_val }}` by `val`
 - [ ] unknown name : `{% command_name command_args %}` create project list in index from a data file
 
