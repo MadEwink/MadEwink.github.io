@@ -1,7 +1,8 @@
 title=Law Enforcer
 rep_url=https://github.com/MadEwink/law-enforcer
 video_url=none
-title_url=https://github.com/MadEwink/law-enforcer
+title_url={{ rep_url=a }}
+img_url={{ rep_url=a }}
 img_src=/img/lawenforcer_icon.png
 img_alt=Law Enforcer icon
 tags=C++,Game dev,Plateformer

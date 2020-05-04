@@ -1,7 +1,8 @@
 title=Advent of Code 2019
 rep_url=https://framagit.org/MadEwink/asventofcode2019
 video_url=none
-title_url=https://framagit.org/MadEwink/asventofcode2019
+title_url={{ rep_url=a }}
+img_url={{ rep_url=a }}
 img_src=/img/adventofcode2019_icon.png
 img_alt=AoC 2019 icon
 tags=ADA

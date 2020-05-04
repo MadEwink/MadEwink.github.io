@@ -1,7 +1,8 @@
 title=Polygons of Light
 rep_url=https://gitlab.com/MadEwink/ld46
 video_url=none
-title_url=https://gitlab.com/MadEwink/ld46
+title_url={{ rep_url=a }}
+img_url={{ rep_url=a }}
 img_src=/img/polygons_of_light_icon.png
 img_alt=Polygons of Light Icon
 tags=Unity,C#,Game Jam,Ludum Dare,Game dev

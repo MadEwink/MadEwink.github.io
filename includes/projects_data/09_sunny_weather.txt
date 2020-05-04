@@ -1,7 +1,8 @@
 title=Sunny weather
 rep_url=https://framagit.org/MadEwink/projet-ete
 video_url=none
-title_url=https://framagit.org/MadEwink/projet-ete
+title_url={{ rep_url=a }}
+img_url={{ rep_url=a }}
 img_src=/img/sunnyweather_icon.png
 img_alt=Sunny weather icon
 tags=Unity,C#,Game dev,Shooter
