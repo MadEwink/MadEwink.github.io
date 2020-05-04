@@ -1,0 +1,8 @@
+title=Advent of Code 2019
+rep_url=https://framagit.org/MadEwink/asventofcode2019
+video_url=none
+title_url=https://framagit.org/MadEwink/asventofcode2019
+img_src=/img/adventofcode2019_icon.png
+img_alt=AoC 2019 icon
+tags=ADA
+description=My participation to <a href="https://adventofcode.com/2019">advent of code 2019</a> using ADA. It helped me explore many ADA features I did not know or had difficulties with, and I learned a lot of things. I wrote some feedbacks in the readme while I was doing the challenge.

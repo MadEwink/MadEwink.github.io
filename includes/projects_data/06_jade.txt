@@ -1,0 +1,8 @@
+title=Resource Manager
+rep_url=https://github.com/matthias4217/JADE-gestion-ressources
+video_url=none
+title_url=https://github.com/matthias4217/JADE-gestion-ressources
+img_src=/img/jade_icon.png
+img_alt=Jade icon
+tags=<a href="https://jade.tilab.com/">Jade</a>
+description=A small school project modeling resource management. We implemented a manager which has to dispatch workers between harvest and produce in order to reach a production goal.

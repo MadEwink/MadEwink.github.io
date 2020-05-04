@@ -1,0 +1,8 @@
+title=Squishy Square
+rep_url=https://github.com/NguyenRichard/Platformer2D
+video_url=none
+title_url=https://github.com/NguyenRichard/Platformer2D
+img_src=/img/squishysquare_icon.png
+img_alt=Squishy Square icon
+tags=Unity,C#,Game dev,Plateformer
+description=A platformer in which you play a square that squishes when you jump, we developed during a Game Engine class, we had to handle all physics and collisions ourselves, and make user feedback.

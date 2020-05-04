@@ -1,0 +1,8 @@
+title=Schmup
+rep_url=https://github.com/MadEwink/JIN-GPGE-schmup
+video_url=none
+title_url=https://github.com/MadEwink/JIN-GPGE-schmup
+img_src=/img/schmup_icon.png
+img_alt=Schmup icon
+tags=Unity,C#,Game dev,Shoot them up
+description=A shoot them up created in Game Programming class, in order to learn some programming techniques such as factories

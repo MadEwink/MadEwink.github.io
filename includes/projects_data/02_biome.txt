@@ -1,0 +1,8 @@
+title=Biome
+rep_url=https://gitlab.com/Atchoom/biome
+video_url=https://www.youtube.com/watch?v=RRjrrGLzHUc
+title_url=/projects/biome.html
+img_src=/img/biome_icon.png
+img_alt=Biome Icon
+tags=Unity,C#,3D,Roguelike,Procedural Generation,Game dev
+description=Biome is a 3D-roguelike prototype made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation.

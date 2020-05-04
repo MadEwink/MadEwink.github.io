@@ -48,25 +48,27 @@ def hasParameter(line):
     return line.find("{{") != -1
 
 def replaceParameter(line, command_arguments):
-    line_beginning = line.split("{{")[0]
-    line_end = line.split("}}")[1]
-    parameter = line.split("{{")[1].split("}}")[0]
-    argument,index = findNextArgument(parameter, 0)
-    # default value, if the argument was not specified in the command
-    value,index = readArgumentValue(parameter, index)
-    if (argument in command_arguments):
-        value = command_arguments[argument]
-    return line_beginning + value + line_end;
+    while (hasParameter(line)):
+        line_beginning = line.partition("{{")[0]
+        line_end = line.partition("}}")[2]
+        parameter = line.partition("{{")[2].partition("}}")[0]
+        argument,index = findNextArgument(parameter, 0)
+        # default value, if the argument was not specified in the command
+        value,index = readArgumentValue(parameter, index)
+        if (argument in command_arguments):
+            value = command_arguments[argument]
+        line = line_beginning + value + line_end
+    return line
 
 def interpreteCode(line, result, command_arguments):
     contents = line.split()
     assert(len(contents) >= 3)
     assert(contents[0] == "{%")
+    indentation = line.split('{')[0]
     instruction = contents[1]
     if instruction == "include":
         fileName = command_arguments['file_name']
         include = open(includeDir+fileName)
-        indentation = line.split('{')[0]
         while True:
             s = include.readline()
             if (s == ''):
@@ -75,6 +77,8 @@ def interpreteCode(line, result, command_arguments):
                 s = replaceParameter(s, command_arguments)
             result.write(indentation+s)
         include.close()
+    elif instruction == "make-posts":
+        createProjectPosts(result, indentation)
 
 def parser(templateName, resultName):
     template = open(templateName, 'r')
@@ -106,6 +110,55 @@ def recursiveExplorer(currentDir):
 
 def parseAllTemplates():
     recursiveExplorer("")
+
+def appendData(project_data, data_type, content):
+    if (data_type == "tags"):
+        tag_list = content.split(',')
+        project_data[data_type] = tag_list
+    elif (content != "none"):
+        project_data[data_type] = content
+
+def parseProjectData(fileName):
+    data_file = open(fileName, 'r')
+    project_data = dict()
+    while True:
+        s = data_file.readline()
+        if (s == ''):
+            break;
+        partition = s.partition('=')
+        appendData(project_data, partition[0], partition[2].rstrip('\n'))
+    return project_data
+
+def createTags(projects_data, indentation, tag_indentation):
+    if (not ("tags" in projects_data)):
+        return ""
+    tags = projects_data["tags"]
+    s = tag_indentation+"<li>"
+    for i in range(len(tags)-1):
+        s += tags[i] + "</li>\n"+indentation+tag_indentation+"<li>"
+    s += tags[-1] + "</li>\n"
+    return s
+
+def createProjectPosts(result, indentation):
+    data_dir = includeDir+"projects_data/"
+    project_data_files = os.listdir(data_dir)
+    project_data_files.sort()
+    for project_data_file in project_data_files:
+        project_data = parseProjectData(data_dir+project_data_file)
+        project_post_template = open(includeDir+"project_post.html", 'r')
+        while True:
+            s = project_post_template.readline()
+            if (s == ''):
+                break;
+            if (hasParameter(s)):
+                if (s.find("{{ tags }}") != -1):
+                    tag_indentation = s.partition('{')[0]
+                    s = createTags(project_data, indentation, tag_indentation)
+                else:
+                    s = replaceParameter(s, project_data)
+            result.write(indentation+s)
+        project_post_template.close()
+
 
 if (__name__ == "__main__"):
     parseAllTemplates()

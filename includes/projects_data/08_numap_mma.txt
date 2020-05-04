@@ -1,0 +1,8 @@
+title=Numap</a> and <a id="project-title" href="https://github.com/MadEwink/numamma">Numamma
+rep_url=https://github.com/MadEwink/numap
+video_url=none
+title_url=https://github.com/MadEwink/numap
+img_src=/img/numamma_icon.png
+img_alt=Numamma icon
+tags=C,Threads,NUMA
+description=Numap and Numamma are C libraries that monitor a multi-threaded program's memory access on a NUMA architecture. During an internship, I worked on those libraries in order to implement a feature.

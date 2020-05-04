@@ -1,0 +1,8 @@
+title=Warbot
+rep_url=https://github.com/MadEwink/warbot-jin
+video_url=none
+title_url=https://github.com/MadEwink/warbot-jin
+img_src=/img/warbot_icon.png
+img_alt=Warbot icon
+tags=AI,Game dev,<a href="https://ccl.northwestern.edu/netlogo/">Netlogo</a>
+description=An AI we developped as a school project for a warbot game. We had to implement a strategy for a faction in a basic strategic game, in which various units can explore, harvest and attack.

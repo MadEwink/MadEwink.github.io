@@ -1,0 +1,8 @@
+title=Eat or Die
+rep_url=https://gitlab.com/MadEwink/opengl-jin
+video_url=none
+title_url=https://gitlab.com/MadEwink/opengl-jin
+img_src=/img/eat_or_die_icon.png
+img_alt=Eat or Die Icon
+tags=OpenGL,C++
+description=A small game on a map. You play a raptor who needs to eat rabbits to stay alive.

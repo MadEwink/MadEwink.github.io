@@ -1,0 +1,8 @@
+title=Default title
+rep_url=none
+video_url=none
+title_url=none
+img_src=none
+img_alt=none
+tags=tag1,tag2
+description=A short description for the project
