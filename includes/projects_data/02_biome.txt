@@ -7,3 +7,5 @@ img_src=/img/biome_icon.png
 img_alt=Biome Icon
 tags=Unity,C#,3D,Roguelike,Procedural Generation,Game dev
 description=Biome is a 3D-roguelike prototype made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation.
+build_win=https://drive.google.com/drive/folders/1FabYI5S_Gg3qXji2IRcAdgajFSRaVE0j?usp=sharing
+build_lin=https://drive.google.com/drive/folders/1aaX3BJHE8PcKgXqyBLAymf-x4hcIHIwE?usp=sharing

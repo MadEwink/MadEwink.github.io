@@ -1,3 +1,4 @@
+{% load-arguments file_name=projects_data/02_biome.txt %}
 <!doctype HTML>
 <html>
 	<head>
@@ -11,12 +12,12 @@
 		<div id="content">
 			<div id="intro">
 				<p>Biome is a 3D-roguelike prototype made in C# with Unity, done as a school project over a semester. I worked on the procedural terrain and objects generation. On this page you will find some details on this part.</p>
-				<p>You can check the <a href="https://gitlab.com/Atchoom/biome">source code here</a>.</p>
+				<p>You can check the <a href="{{ rep_url=/ }}">source code here</a>.</p>
 			</div>
 			<div id="main-content">
 				<img src="/img/biome_image.png" alt="Biome image">
 				<h2>Introduction</h2>
-				<p>You can take a look at this <a href="https://www.youtube.com/watch?v=RRjrrGLzHUc">presentation video</a> realised at the end of the project.</p>
+				<p>You can take a look at this <a href="{{ video_url=/ }}">presentation video</a> realised at the end of the project.</p>
 				<p>We were a team of five students on this project. We divided the work in three parts : the gameplay and enemies, which was done by two of us, the user interface and the project lead, taken by the student who had the idea for this project, and the environment generation, which we were two to do.</p>
 				<p>The objectives were to dispose of a tool that would enable game designers to design maps for the game Biome. We decided to keep it as configurable as we could. However, some decisions were made and fixed. We wanted the world to be composed of several ring shaped regions called biomes.</p>
 				The objectives were :
@@ -99,7 +100,7 @@
 				</div>
 				<p>With those modifications, we made it possible to implement dynamic modification of the terrain, but we did not use it. A great application would be to adapt the terrain depending on how the player behaves, and how difficult the game is, in a similar way as the Gameplay/Ennemies team did for enemies.</p>
 				<h2>Other stuff</h2>
-				<p>At the end of the project, we had some documents to create in order to present our project. There was an oral presentation (and its support), the <a href="https://www.youtube.com/watch?v=RRjrrGLzHUc">presentation video</a>, a poster, an image which represents the project, that you can see at the top of this page, a design document, a few situational short descriptions, and a build of the project (google drive links : <a href="https://drive.google.com/drive/folders/1FabYI5S_Gg3qXji2IRcAdgajFSRaVE0j?usp=sharing">windows</a>, <a href="https://drive.google.com/drive/folders/1aaX3BJHE8PcKgXqyBLAymf-x4hcIHIwE?usp=sharing">linux</a>).</p>
+				<p>At the end of the project, we had some documents to create in order to present our project. There was an oral presentation (and its support), the <a href="{{ video_url=/ }}">presentation video</a>, a poster, an image which represents the project, that you can see at the top of this page, a design document, a few situational short descriptions, and a build of the project (google drive links : <a href="{{ build_win=/ }}">windows</a>, <a href="{{ build_lin=/ }}">linux</a>).</p>
 				<p>I made the video : we all captured clips of scenes we thought represented well our work on this project. One of us made the music. Then I assembled the clips and the music in a video, using Blender. I also made a part of the image : I assembled the screens a friend took of generated terrain (from an orthographic side view), assembled them, cleared artifacts due to the orthographic view, and smoothed the transitions between terrains. My firend then added the hexagonal mosaic effect and the texts.</p>
 				<p>You can see another member's own page for this project <a href="https://matthias4217.github.io/project/biome/">here</a>.</p>
 			</div>

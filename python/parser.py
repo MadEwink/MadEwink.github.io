@@ -60,7 +60,7 @@ def replaceParameter(line, command_arguments):
         line = line_beginning + value + line_end
     return line
 
-def interpreteCode(line, result, command_arguments):
+def interpreteCode(line, result, command_arguments, global_arguments):
     contents = line.split()
     assert(len(contents) >= 3)
     assert(contents[0] == "{%")
@@ -79,21 +79,30 @@ def interpreteCode(line, result, command_arguments):
         include.close()
     elif instruction == "make-posts":
         createProjectPosts(result, indentation)
+    elif instruction == "load-arguments":
+        fileName = command_arguments['file_name']
+        loaded_arguments = parseProjectData(includeDir+fileName)
+        for key in loaded_arguments:
+            global_arguments[key] = loaded_arguments[key]
 
 def parser(templateName, resultName):
+    global_arguments = dict()
     template = open(templateName, 'r')
     result = open(resultName, 'w')
     while True:
         s = template.readline()
         if (s == ''):
             break;
-        if not isCodeLine(s):
-            result.write(s)
-        else:
+        if isCodeLine(s):
             # parse command_arguments
             # /!\ an argument may be composed of strings with spaces !!
             command_arguments = parseCommandArguments(s)
-            interpreteCode(s, result, command_arguments)
+            interpreteCode(s, result, command_arguments, global_arguments)
+        elif hasParameter(s):
+            s = replaceParameter(s,global_arguments)
+            result.write(s)
+        else:
+            result.write(s)
     template.close()
     result.close()
 
