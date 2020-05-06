@@ -72,7 +72,7 @@ def interpreteCode(line, result, command_arguments, global_arguments):
         while True:
             s = include.readline()
             if (s == ''):
-                break;
+                break
             if (hasParameter(s)):
                 s = replaceParameter(s, command_arguments)
             result.write(indentation+s)
@@ -92,7 +92,7 @@ def parser(templateName, resultName):
     while True:
         s = template.readline()
         if (s == ''):
-            break;
+            break
         if isCodeLine(s):
             # parse command_arguments
             # /!\ an argument may be composed of strings with spaces !!
@@ -133,7 +133,7 @@ def parseProjectData(fileName):
     while True:
         s = data_file.readline()
         if (s == ''):
-            break;
+            break
         partition = s.partition('=')
         appendData(project_data, partition[0], partition[2].rstrip('\n'))
     return project_data
@@ -153,12 +153,14 @@ def createProjectPosts(result, indentation):
     project_data_files = os.listdir(data_dir)
     project_data_files.sort()
     for project_data_file in project_data_files:
+        if project_data_file[0] in "_.":
+            continue
         project_data = parseProjectData(data_dir+project_data_file)
         project_post_template = open(includeDir+"project_post.html", 'r')
         while True:
             s = project_post_template.readline()
             if (s == ''):
-                break;
+                break
             if (hasParameter(s)):
                 if (s.find("{{ tags }}") != -1):
                     tag_indentation = s.partition('{')[0]

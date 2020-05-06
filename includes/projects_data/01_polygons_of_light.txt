@@ -1,6 +1,7 @@
 title=Polygons of Light
 rep_url=https://gitlab.com/MadEwink/ld46
-video_url=none
+video_url=https://peertube.nocturlab.fr/videos/watch/1acb33bb-92b2-4a70-a4fc-8070eb344599
+video_title=<img src="/img/video_icon.png" alt=">" class="video-icon"></img> Video
 title_url={{ rep_url=a }}
 img_url={{ rep_url=a }}
 img_src=/img/polygons_of_light_icon.png

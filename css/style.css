@@ -109,6 +109,7 @@ ul.nav-links > li {
 }
 
 .project-post {
+	position: relative;
 	padding: 5px;
 	margin: 3px;
 	border-style: solid;
@@ -143,6 +144,18 @@ h2.project-title {
 
 a.project-title {
 	text-decoration: none;
+}
+
+a.video-link {
+	font-size: 1.3em;
+	text-decoration: none;
+	position: absolute;
+	right: 5%;
+	top: 10%;
+}
+
+.video-icon {
+	height:1em;
 }
 
 .project-description {
