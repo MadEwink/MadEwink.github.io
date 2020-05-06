@@ -30,7 +30,7 @@
 				</ul>
 				<h2>Coordinates system and initial generation</h2>
 				<p>Since the world was going to be circular, I thought it would be interesting to use a hexagonal shaped grid instead of a traditional square grid, in order to smooth the generation. Lots of thanks to <a href="https://www.redblobgames.com/">Amit Patel</a> and his <a href="https://www.redblobgames.com/grids/hexagons/">Hexagonal grid reference</a> which made this a lot easier.</p>
-				<div id="paragraph-with-figure">
+				<div class="paragraph-with-figure">
 					<div class="first">
 						<p>We then decided to cut the terrain in tiles. Those tiles would have configurable sizes, both concerning the hexagons size and the tile radius, as you can see in the figure. This makes it possible to change those parameters to generate a smaller or bigger map with different costs.</p>
 						<p>During the development, when facing a bug we often tried several tile radii in order to identify it, but we usually sticked at the value 17, except one of us who had difficulties running it on his computer, and used a smaller value.</p>
@@ -42,7 +42,7 @@
 						{% include file_name=biome/one_tile.html %}
 					</div>
 				</div>
-				<div id="paragraph-with-figure">
+				<div class="paragraph-with-figure">
 					<div id="figure" class="first">
 						Step : <span id="first-generation-value">20</span><br/>
 						<span  class="js-only" style="visibility:hidden;"><input type="range" min="0" max="20" value="20" class="slider" id="first-generation-slider" onInput="animateFirstGeneration()"></span>
@@ -59,7 +59,7 @@
 						<p>The number of rings generated for the starting area is configurable.</p>
 					</div>
 				</div>
-				<div id="three-columns">
+				<div class="three-columns">
 					<div class="first">
 						<p>The relief of the terrain is determined through a Perlin Noise. Each hexagon has a height, which is computed through mixing Perlin Noises.</p>
 						<p>Using Perlin Noise makes points that are spatially close have similar heights. This was perfect, since we wanted a terrain with moderate local height variations.</p>
@@ -77,13 +77,13 @@
 				<h2>Object Generation</h2>
 				<p>Once we had a terrain, we wanted to place some objects on it. We divided objects into two categories : small objects (trees, bushes, rocks, columns, etc) that can be placed quite anywhere, and big objects (buildings, bigger rocks, ruins, etc) that need a flat terrain underneath.</p>
 				<p>Concerning big objects, we thought it would be quite difficult to look for a flat space on the map, so we decided we would flatten the terrain before placing the object. We thus placed the object generation step between the hexagon height attribution, and the 3D model construction, in order to be able to modify existing height before creating the model. However, one object could be placed near the border of a tile, and thus need to alter the neighbor tiles height data, and placing space occupation indicators on them (we used it to prevent objects from spawning too close to each other).</p>
-				<div id="paragraph-with-figure">
+				<div class="paragraph-with-figure">
 					<div class="first">
 						<p>IIn same idea, one tile could place an object close to its neighbour located on a ring closer to the center during the initial generation. The generation order was thus altered as such :</p>
 						<ol>
-							<li><em id="blue">Attribute height</em> to the center tile (which can be considered as ring zero)</li>
-							<li><em id="blue">Attribute height</em> to the first ring</li>
-							<li><em id="red">Attribute object location</em> on the center tile</li>
+							<li><em class="blue">Attribute height</em> to the center tile (which can be considered as ring zero)</li>
+							<li><em class="blue">Attribute height</em> to the first ring</li>
+							<li><em class="red">Attribute object location</em> on the center tile</li>
 							<li><em id="blue">Attribute height</em> to the next ring</li>
 							<li><em id="red">Attribute object location</em> of the current ring</li>
 							<li><em id="green">Compute 3D model</em> of previous ring</li>

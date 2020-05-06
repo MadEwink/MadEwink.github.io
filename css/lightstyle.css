@@ -27,7 +27,7 @@ button.theme {
 	background-color : #9999e6;
 }
 
-#project-post {
+.project-post {
 	background-color: #7070db;
 }
 
@@ -35,12 +35,12 @@ button.theme {
 	background-color: #7070db;
 }
 
-a#project-title {
+a.project-title {
 	color: black;
 	text-shadow: 1px 1px 3px #0f0f3d;
 }
 
-ul#project-tags > li {
+ul.project-tags > li {
 	background-color: #8585e0;
 }
 
