@@ -151,7 +151,7 @@ def createTags(projects_data, indentation, tag_indentation):
 def createProjectPosts(result, indentation):
     data_dir = includeDir+"projects_data/"
     project_data_files = os.listdir(data_dir)
-    project_data_files.sort()
+    project_data_files.sort(reverse=True)
     for project_data_file in project_data_files:
         if project_data_file[0] in "_.":
             continue
