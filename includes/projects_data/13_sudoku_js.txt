@@ -1,0 +1,9 @@
+title=Sudoku javascript
+rep_url=https://github.com/MadEwink/sudoku-js
+video_url=none
+title_url=/sudoku-js/
+img_url={{ title_url=a }}
+img_src=/img/sudoku_icon.png
+img_alt=Sudoku icon
+tags=Javascript,HTML,CSS, Game dev
+description=A small sudoku interface developped in javascript. The goal is to focus on the interface, making it easy for anyone to play it. You can check the <a href={{ rep_url=a }}>source code here</a> and <a href={{ title_url=a }}>test it here</a>.
