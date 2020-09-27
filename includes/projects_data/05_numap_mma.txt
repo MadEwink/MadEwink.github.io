@@ -1,4 +1,4 @@
-title=Numap</a> and <a id="project-title" href="https://github.com/MadEwink/numamma">Numamma
+title=Numap</a> and <a class="project-title" href="https://github.com/MadEwink/numamma">Numamma
 rep_url=https://github.com/MadEwink/numap
 video_url=none
 title_url={{ rep_url=a }}

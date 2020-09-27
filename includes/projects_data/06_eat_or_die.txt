@@ -6,4 +6,4 @@ img_url={{ rep_url=a }}
 img_src=/img/eat_or_die_icon.png
 img_alt=Eat or Die Icon
 tags=OpenGL,C++
-description=A small game on a map. You play a raptor who needs to eat rabbits to stay alive.
+description=A small third person game. You play a raptor who needs to eat rabbits to stay alive.
