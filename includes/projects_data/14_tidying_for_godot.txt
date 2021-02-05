@@ -1,0 +1,9 @@
+title=Tidying for Godot
+rep_url=https://gitlab.com/lesjeuxagogo/tidyingforgodot
+play_now_url=https://lesjeuxagogo.gitlab.io/tidyingforgodot
+title_url={{ rep_url=a }}
+img_url={{ rep_url=a }}
+img_src=/img/tidying_for_godot_icon.png
+img_alt=Tidying for Godot Icon
+tags=Godot Engine,Game Jam,Global Game Jam,Game dev
+description=Tidying for Godot is a game created in 48h during the Global Game Jam Online of 2021 by a team of three developpers. You can check the <a href="{{ rep_url=a }}">source code here</a>, the <a href="https://globalgamejam.org/2021/games/tidying-godot-4">game jam entry here</a>, and <a href="{{ play_now_url=a }}">play it on browser here</a>.
