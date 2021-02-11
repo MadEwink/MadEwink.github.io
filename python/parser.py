@@ -6,6 +6,97 @@ rootDir = "../"
 includeDir = rootDir+"includes/"
 templateDir = rootDir+"templates/"
 
+# beginning of new system
+
+class Error(Exception):
+    pass
+
+class ValueError(Error):
+    def __init__(self, line, message):
+        self.line = line
+        self.message = message
+
+class ValueIncompleteStringError(ValueError):
+    """Raised when the value of a parameter begins with '"' but does not end with '"'"""
+    pass
+
+class ValueTooManyItemsError(ValueError):
+    """Raised when the value of a parameter has several items in an unsupported way"""
+    pass
+
+class Parameter():
+    def __init__(self, line):
+        self.__cut(line)
+    def __format_argument(self, arg):
+        i = 0
+        # remove trailing spaces
+        while arg[i].isspace():
+            i += 1
+        # read argument name
+        self.argument = ""
+        while i < len(arg):
+            # replace spaces that are not at the end of the arg by '_'
+            if arg[i].isspace():
+                if i+1 < len(arg) and not arg[i+1].isspace():
+                    self.argument += '_'
+            else:
+                self.argument += arg[i]
+            i += 1
+    def __format_value(self, val):
+        i = 0
+        # remove trailing spaces
+        while val[i].isspace():
+            i += 1
+        # read value
+        if val[i] == '"':
+            j = i
+            while True:
+                # keep everything from here until the ending '"'
+                end_pos = val.find('\"', j+1)
+                if end_pos == -1:
+                    # error, there is no end to the string
+                    raise ValueIncompleteStringError(val, "no ending '\"' was found")
+                if val[end_pos-1] != '\\':
+                    break
+                j = end_pos+1
+            self.default_value = val[i+1:end_pos]
+            # check if there are more stuff after string end
+            while j < len(val):
+                if not val[j].isspace():
+                    raise ValueTooManyItemsError(val, "there is stuff after ending '\"'")
+        else:
+            #TODO
+            self.default_value = val
+    def __cut(self, line):
+        equal_sign_pos = line.find('=')
+        if equal_sign_pos == -1:
+            self.__format_argument(line)
+            self.default_value = ""
+        else:
+            self.__format_argument(line[:equal_sign_pos])
+            self.__format_value(line[equal_sign_pos+1:])
+
+def parseParameter(line):
+    assert(line[0] == '{')
+    assert(line[1] == '{')
+    endpos = line.find('}}')
+    assert(endpos != -1)
+    return Parameter(line[2:endpos]), endpos+1
+
+def parseLine(line):
+    for i in range(len(line)):
+        # if it looks like a parameter or a command
+        if (line[i] == '{'):
+            # if it's the end of the line, ignore
+            if (i+1 >= len(line)):
+                continue
+            # here we now there is a next char
+            if (line[i+1] == '{'):
+                # it should be a parameter
+                parameter,i = parseParameter(line[i:])
+
+# end of new system
+
 def isCodeLine(line):
     contents = line.split()
     return (len(contents) != 0 and contents[0] == "{%")
