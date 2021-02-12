@@ -11,15 +11,15 @@ templateDir = rootDir+"templates/"
 argument_store = { "global" : dict(), "local" : dict() }
 
 class Error(Exception):
-    pass
-
-class ParameterError(Error):
     def __init__(self, line, message):
         self.line = line
         self.message = message
 
-class ParameterBoundError(ParameterError):
-    """Raised when a parameter has incorrect boundaries"""
+class ParameterError(Error):
+    pass
+
+class BoundError(Error):
+    """Raised when a parameter or a command has incorrect boundaries"""
     pass
 
 class ValueError(ParameterError):
@@ -85,7 +85,7 @@ class Parameter(Element):
             self.default_value = val[i+1:end_pos]
             # check if there are more stuff after string end
             j += end_pos + 1
-            while j < len(val):
+            while j < len(val)-1:
                 j += 1
                 if not val[j].isspace():
                     raise ValueTooManyItemsError(val, "there is stuff after ending \" : " + val[j])
@@ -116,21 +116,33 @@ class Parameter(Element):
             return parseLine(argument_store["global"][self.argument])
         return parseLine(self.default_value)
 
+def comp_str(str1, str2):
+    l = min(len(str2), len(str2))
+    for i in range(l):
+        if str1[i] != str2[i]:
+            return False
+    return True
+
+def detect_end(line, begin_sign, end_sign):
+    for i in range(len(begin_sign)):
+        assert(line[i] == begin_sign[i])
+    depth = 1
+    i = len(begin_sign)
+    while depth > 0 and i < len(line):
+        if (line[i] == begin_sign[0] and comp_str(line[i:], begin_sign)):
+            depth += 1
+        elif (line[i] == end_sign[0] and comp_str(line[i:], end_sign)):
+            depth -= 1
+        i += 1
+    if depth != 0:
+        raise BoundError(line, "depth of parameter at line end is "+str(depth))
+    return i
+
 def parseParameter(line):
     assert(line[0] == '{')
     assert(line[1] == '{')
     # detect end of parameter
-    depth = 1
-    i = 2
-    while depth > 0 and i < len(line):
-        if line[i] == '}' and (i < len(line)-1 and line[i+1] == '}'):
-            depth -= 1
-        elif line[i] == '{' and (i < len(line)-1 and line[i+1] == '{'):
-            depth += 1
-        i += 1
-    if depth != 0:
-        raise ParameterBoundError(line, "depth of parameter at line end is "+str(depth))
-    endpos = i-1
+    endpos = detect_end(line,"{{", "}}")-1
     return Parameter(line[2:endpos]), endpos+1
 
 def parseLine(line):
@@ -150,13 +162,18 @@ def parseLine(line):
                     line_cut.append(Element(line[last_stored_pos:i]))
                 # store parameter
                 parameter,end_pos = parseParameter(line[i:])
-                i += end_pos
                 line_cut.append(parameter)
+                i += end_pos
                 last_stored_pos = i+1
             if (line[i+1] == '%'):
                 # it should be a command
-                # TODO
-                pass
+                end_pos = detect_end(line[i:], "{%", "%}")+i
+                command_arguments = parseCommandArguments(line[i:end_pos])
+                line_cut += [interpreteCode(line[:end_pos], command_arguments)]
+                i = end_pos
+                last_stored_pos = i+1
+                while (last_stored_pos < len(line) and line[last_stored_pos].isspace()):
+                    last_stored_pos += 1
     if (last_stored_pos < len(line)):
         line_cut.append(Element(line[last_stored_pos:len(line)]))
     return line_cut
@@ -237,49 +254,44 @@ def replaceParameter(line, command_arguments):
         line = line_beginning + value + line_end
     return line
 
-def interpreteCode(line, result, command_arguments, global_arguments):
+def interpreteCode(line, command_arguments):
+    result = ""
     contents = line.split()
     assert(len(contents) >= 3)
     assert(contents[0] == "{%")
     indentation = line.split('{')[0]
     instruction = contents[1]
     if instruction == "include":
-        fileName = command_arguments['file_name']
+        fileName = command_arguments.pop('file_name')
         include = open(includeDir+fileName)
+        # set commands arguments to be local arguments
+        argument_store["local"] = command_arguments
         while True:
             s = include.readline()
             if (s == ''):
                 break
-            if (hasParameter(s)):
-                s = replaceParameter(s, command_arguments)
-            result.write(indentation+s)
+            line_cut = parseLine(s)
+            result += indentation+interpreteLine(line_cut)
         include.close()
     elif instruction == "make-posts":
-        createProjectPosts(result, indentation)
+        result = createProjectPosts(indentation)
     elif instruction == "load-arguments":
-        fileName = command_arguments['file_name']
-        loaded_arguments = parseProjectData(includeDir+fileName)
-        for key in loaded_arguments:
-            global_arguments[key] = loaded_arguments[key]
+        fileName = command_arguments.pop('file_name')
+        context = command_arguments.pop('context')
+        if context in argument_store:
+            argument_store[context].update(parseProjectData(includeDir+fileName))
+        else:
+            argument_store[context] = parseProjectData(includeDir+fileName)
+    return Element(result)
 
 def parser(templateName, resultName):
-    global_arguments = dict()
     template = open(templateName, 'r')
     result = open(resultName, 'w')
     while True:
         s = template.readline()
         if (s == ''):
             break
-        if isCodeLine(s):
-            # parse command_arguments
-            # /!\ an argument may be composed of strings with spaces !!
-            command_arguments = parseCommandArguments(s)
-            interpreteCode(s, result, command_arguments, global_arguments)
-        elif hasParameter(s):
-            s = replaceParameter(s,global_arguments)
-            result.write(s)
-        else:
-            result.write(s)
+        result.write(interpreteLine(parseLine(s)))
     template.close()
     result.close()
 
@@ -325,7 +337,8 @@ def createTags(projects_data, indentation, tag_indentation):
     s += tags[-1] + "</li>\n"
     return s
 
-def createProjectPosts(result, indentation):
+def createProjectPosts(indentation):
+    result = ""
     data_dir = includeDir+"projects_data/"
     project_data_files = os.listdir(data_dir)
     project_data_files.sort(reverse=True)
@@ -344,8 +357,9 @@ def createProjectPosts(result, indentation):
                     s = createTags(project_data, indentation, tag_indentation)
                 else:
                     s = replaceParameter(s, project_data)
-            result.write(indentation+s)
+            result += indentation+s
         project_post_template.close()
+    return result
 
 if (__name__ == "__main__"):
     parseAllTemplates()
