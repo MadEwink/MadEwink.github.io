@@ -145,7 +145,9 @@ def parseParameter(line):
     endpos = detect_end(line,"{{", "}}")-1
     return Parameter(line[2:endpos]), endpos+1
 
-def parseLine(line):
+def parseLine(line, base_indentation=""):
+    if len(line) == 0:
+        return [Element("")]
     last_stored_pos = 0
     line_cut = []
     for i in range(len(line)):
@@ -165,11 +167,11 @@ def parseLine(line):
                 line_cut.append(parameter)
                 i += end_pos
                 last_stored_pos = i+1
-            if (line[i+1] == '%'):
+            elif (line[i+1] == '%'):
                 # it should be a command
                 end_pos = detect_end(line[i:], "{%", "%}")+i
                 command_arguments = parseCommandArguments(line[i:end_pos])
-                line_cut += [interpreteCode(line[:end_pos], command_arguments)]
+                line_cut += interpreteCode(line[:end_pos], command_arguments, base_indentation)
                 i = end_pos
                 last_stored_pos = i+1
                 while (last_stored_pos < len(line) and line[last_stored_pos].isspace()):
@@ -200,10 +202,6 @@ def interpreteLine(line_cut):
     return line
 
 # end of new system
-
-def isCodeLine(line):
-    contents = line.split()
-    return (len(contents) != 0 and contents[0] == "{%")
 
 def findNextArgument(line, index):
     last_space = index
@@ -238,28 +236,12 @@ def parseCommandArguments(line):
         arguments[argument] = value
     return arguments
 
-def hasParameter(line):
-    return line.find("{{") != -1
-
-def replaceParameter(line, command_arguments):
-    while (hasParameter(line)):
-        line_beginning = line.partition("{{")[0]
-        line_end = line.partition("}}")[2]
-        parameter = line.partition("{{")[2].partition("}}")[0]
-        argument,index = findNextArgument(parameter, 0)
-        # default value, if the argument was not specified in the command
-        value,index = readArgumentValue(parameter, index)
-        if (argument in command_arguments):
-            value = command_arguments[argument]
-        line = line_beginning + value + line_end
-    return line
-
-def interpreteCode(line, command_arguments):
+def interpreteCode(line, command_arguments, base_indentation):
     result = ""
     contents = line.split()
     assert(len(contents) >= 3)
     assert(contents[0] == "{%")
-    indentation = line.split('{')[0]
+    indentation = base_indentation + line.split('{')[0]
     instruction = contents[1]
     if instruction == "include":
         fileName = command_arguments.pop('file_name')
@@ -270,7 +252,7 @@ def interpreteCode(line, command_arguments):
             s = include.readline()
             if (s == ''):
                 break
-            line_cut = parseLine(s)
+            line_cut = parseLine(s, indentation)
             result += indentation+interpreteLine(line_cut)
         include.close()
     elif instruction == "make-posts":
@@ -282,7 +264,9 @@ def interpreteCode(line, command_arguments):
             argument_store[context].update(parseProjectData(includeDir+fileName))
         else:
             argument_store[context] = parseProjectData(includeDir+fileName)
-    return Element(result)
+    elif instruction == "tags":
+        result += createTags(indentation, base_indentation)
+    return parseLine(result)
 
 def parser(templateName, resultName):
     template = open(templateName, 'r')
@@ -327,13 +311,13 @@ def parseProjectData(fileName):
         appendData(project_data, partition[0], partition[2].rstrip('\n'))
     return project_data
 
-def createTags(projects_data, indentation, tag_indentation):
-    if (not ("tags" in projects_data)):
+def createTags(indentation, base_indentation):
+    if (not ("tags" in argument_store["local"])):
         return ""
-    tags = projects_data["tags"]
-    s = tag_indentation+"<li>"
+    tags = argument_store["local"]["tags"]
+    s = indentation[len(base_indentation):]+"<li>"
     for i in range(len(tags)-1):
-        s += tags[i] + "</li>\n"+indentation+tag_indentation+"<li>"
+        s += tags[i] + "</li>\n"+indentation+"<li>"
     s += tags[-1] + "</li>\n"
     return s
 
@@ -345,19 +329,13 @@ def createProjectPosts(indentation):
     for project_data_file in project_data_files:
         if project_data_file[0] in "_.":
             continue
-        project_data = parseProjectData(data_dir+project_data_file)
+        argument_store["local"] = parseProjectData(data_dir+project_data_file)
         project_post_template = open(includeDir+"project_post.html", 'r')
         while True:
             s = project_post_template.readline()
             if (s == ''):
                 break
-            if (hasParameter(s)):
-                if (s.find("{{ tags }}") != -1):
-                    tag_indentation = s.partition('{')[0]
-                    s = createTags(project_data, indentation, tag_indentation)
-                else:
-                    s = replaceParameter(s, project_data)
-            result += indentation+s
+            result += indentation+interpreteLine(parseLine(s,indentation))
         project_post_template.close()
     return result
 
