@@ -5,7 +5,7 @@ import os
 rootDir = "../"
 includeDir = rootDir+"includes/"
 templateDir = rootDir+"templates/"
-resultDir = rootDir+"site/"
+resultDir = rootDir+"docs/"
 
 # beginning of new system
 
