@@ -1,8 +1,8 @@
 title=Warbot
 rep_url=https://github.com/MadEwink/warbot-jin
 video_url=none
-title_url={{ rep_url=a }}
-img_url={{ rep_url=a }}
+title_url={{ rep_url }}
+img_url={{ rep_url }}
 img_src=/img/warbot_icon.png
 img_alt=Warbot icon
 tags=AI,Game dev,<a href="https://ccl.northwestern.edu/netlogo/">Netlogo</a>

@@ -3,7 +3,7 @@ rep_url=https://gitlab.com/Atchoom/biome
 video_url=https://www.youtube.com/watch?v=RRjrrGLzHUc
 video_title=<img src="/img/video_icon.png" alt=">" class="video-icon"></img> Video
 title_url=/projects/biome.html
-img_url={{ title_url=a }}
+img_url={{ title_url }}
 img_src=/img/biome_icon.png
 img_alt=Biome Icon
 tags=Unity,C#,3D,Roguelike,Procedural Generation,Game dev

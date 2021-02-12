@@ -1,7 +1,7 @@
 title=Numap</a> and <a class="project-title" href="https://github.com/MadEwink/numamma">Numamma
 rep_url=https://github.com/MadEwink/numap
 video_url=none
-title_url={{ rep_url=a }}
+title_url={{ rep_url }}
 img_url=https://github.com/MadEwink/numamma
 img_src=/img/numamma_icon.png
 img_alt=Numamma icon
