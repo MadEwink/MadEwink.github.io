@@ -5,6 +5,7 @@ import os
 rootDir = "../"
 includeDir = rootDir+"includes/"
 templateDir = rootDir+"templates/"
+resultDir = rootDir+"site/"
 
 # beginning of new system
 
@@ -287,8 +288,8 @@ def recursiveExplorer(currentDir):
         if os.path.isdir(templateDir+currentDir+content):
             recursiveExplorer(currentDir+content+"/")
         else:
-            os.makedirs(rootDir+currentDir, exist_ok=True)
-            parser(templateDir+currentDir+content, rootDir+currentDir+content)
+            os.makedirs(resultDir+currentDir, exist_ok=True)
+            parser(templateDir+currentDir+content, resultDir+currentDir+content)
 
 def parseAllTemplates():
     recursiveExplorer("")
