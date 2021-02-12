@@ -8,6 +8,8 @@ templateDir = rootDir+"templates/"
 
 # beginning of new system
 
+argument_store = { "global" : dict(), "local" : dict() }
+
 class Error(Exception):
     pass
 
@@ -34,8 +36,8 @@ class ValueTooManyItemsError(ValueError):
 class Element():
     def __init__(self, line):
         self.line = line
-    def interprete(self, context):
-        return self.line
+    def interprete(self):
+        return self
 
 class Parameter(Element):
     def __init__(self, line):
@@ -56,6 +58,13 @@ class Parameter(Element):
             else:
                 self.argument += arg[i]
             i += 1
+        # separate context
+        if self.argument.find(':') != -1:
+            context_pos = self.argument.rindex(':')
+            self.context = self.argument[0:context_pos]
+            self.argument = self.argument[context_pos+1:len(self.argument)]
+        else:
+            self.context = None
     def __format_value(self, val):
         i = 0
         # remove trailing spaces
@@ -94,9 +103,18 @@ class Parameter(Element):
         else:
             self.__format_argument(line[:equal_sign_pos])
             self.__format_value(line[equal_sign_pos+1:])
-    def interprete(self, context):
-        #TODO
-        return self.default_value
+    def interprete(self):
+        # if there is a context we want the value in the context, and if it's not there just the default value
+        if (self.context):
+            # search associated dict
+            if (self.context in argument_store and self.argument in argument_store[self.context]):
+                return parseLine(argument_store[self.context][self.argument])
+        # if there is no context, we first try local, then global, before getting back to default value
+        elif self.argument in argument_store["local"]:
+            return parseLine(argument_store["local"][self.argument])
+        elif self.argument in argument_store["global"]:
+            return parseLine(argument_store["global"][self.argument])
+        return parseLine(self.default_value)
 
 def parseParameter(line):
     assert(line[0] == '{')
@@ -138,9 +156,31 @@ def parseLine(line):
             if (line[i+1] == '%'):
                 # it should be a command
                 # TODO
+                pass
     if (last_stored_pos < len(line)):
         line_cut.append(Element(line[last_stored_pos:len(line)]))
     return line_cut
+
+def interpreteLine(line_cut):
+    i = 0
+    while i < len(line_cut):
+        begin = line_cut[:i]
+        current = line_cut[i]
+        if i+1 < len(line_cut):
+            end = line_cut[i+1:]
+        else:
+            end = []
+        while type(current) != Element:
+            l = current.interprete()
+            current = l[0]
+            if len(l) > 1:
+                end = l[1:] + end
+        line_cut = begin + [current] + end
+        i += 1
+    line = ""
+    for e in line_cut:
+        line += e.line
+    return line
 
 # end of new system
 
