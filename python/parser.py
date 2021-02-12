@@ -11,10 +11,17 @@ templateDir = rootDir+"templates/"
 class Error(Exception):
     pass
 
-class ValueError(Error):
+class ParameterError(Error):
     def __init__(self, line, message):
         self.line = line
         self.message = message
+
+class ParameterBoundError(ParameterError):
+    """Raised when a parameter has incorrect boundaries"""
+    pass
+
+class ValueError(ParameterError):
+    pass
 
 class ValueIncompleteStringError(ValueError):
     """Raised when the value of a parameter begins with '"' but does not end with '"'"""
@@ -24,8 +31,15 @@ class ValueTooManyItemsError(ValueError):
     """Raised when the value of a parameter has several items in an unsupported way"""
     pass
 
-class Parameter():
+class Element():
     def __init__(self, line):
+        self.line = line
+    def interprete(self, context):
+        return self.line
+
+class Parameter(Element):
+    def __init__(self, line):
+        self.line = line
         self.__cut(line)
     def __format_argument(self, arg):
         i = 0
@@ -61,12 +75,17 @@ class Parameter():
                 j = end_pos+1
             self.default_value = val[i+1:end_pos]
             # check if there are more stuff after string end
+            j += end_pos + 1
             while j < len(val):
+                j += 1
                 if not val[j].isspace():
-                    raise ValueTooManyItemsError(val, "there is stuff after ending '\"'")
+                    raise ValueTooManyItemsError(val, "there is stuff after ending \" : " + val[j])
         else:
-            #TODO
-            self.default_value = val
+            self.default_value = ""
+            while i < len(val):
+                if not val[i].isspace() or (i+1 < len(val) and not val[i+1].isspace()):
+                    self.default_value += val[i]
+                i += 1
     def __cut(self, line):
         equal_sign_pos = line.find('=')
         if equal_sign_pos == -1:
@@ -75,25 +94,53 @@ class Parameter():
         else:
             self.__format_argument(line[:equal_sign_pos])
             self.__format_value(line[equal_sign_pos+1:])
+    def interprete(self, context):
+        #TODO
+        return self.default_value
 
 def parseParameter(line):
     assert(line[0] == '{')
     assert(line[1] == '{')
-    endpos = line.find('}}')
-    assert(endpos != -1)
+    # detect end of parameter
+    depth = 1
+    i = 2
+    while depth > 0 and i < len(line):
+        if line[i] == '}' and (i < len(line)-1 and line[i+1] == '}'):
+            depth -= 1
+        elif line[i] == '{' and (i < len(line)-1 and line[i+1] == '{'):
+            depth += 1
+        i += 1
+    if depth != 0:
+        raise ParameterBoundError(line, "depth of parameter at line end is "+str(depth))
+    endpos = i-1
     return Parameter(line[2:endpos]), endpos+1
 
 def parseLine(line):
+    last_stored_pos = 0
+    line_cut = []
     for i in range(len(line)):
         # if it looks like a parameter or a command
         if (line[i] == '{'):
             # if it's the end of the line, ignore
             if (i+1 >= len(line)):
                 continue
-            # here we now there is a next char
+            # here we know there is a next char
             if (line[i+1] == '{'):
                 # it should be a parameter
-                parameter,i = parseParameter(line[i:])
+                # store line beginning
+                if (last_stored_pos < i-1):
+                    line_cut.append(Element(line[last_stored_pos:i]))
+                # store parameter
+                parameter,end_pos = parseParameter(line[i:])
+                i += end_pos
+                line_cut.append(parameter)
+                last_stored_pos = i+1
+            if (line[i+1] == '%'):
+                # it should be a command
+                # TODO
+    if (last_stored_pos < len(line)):
+        line_cut.append(Element(line[last_stored_pos:len(line)]))
+    return line_cut
 
 # end of new system
 
@@ -123,7 +170,6 @@ def readArgumentValue(line, index):
     while (line[end_index] != end_char):
         end_index += 1
     return (line[begin_index:end_index], end_index)
-
 
 def parseCommandArguments(line):
     argument_number = line.count('=')
@@ -260,7 +306,6 @@ def createProjectPosts(result, indentation):
                     s = replaceParameter(s, project_data)
             result.write(indentation+s)
         project_post_template.close()
-
 
 if (__name__ == "__main__"):
     parseAllTemplates()
