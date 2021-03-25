@@ -1,0 +1,9 @@
+title=Basic Sokoban
+rep_url=https://gitlab.com/madewink/basic-sokoban
+play_now_url=https://madewink.gitlab.io/basic-sokoban
+title_url={{ rep_url }}
+img_url={{ rep_url }}
+img_src=/img/basic_sokoban_icon.png
+img_alt=Basic Sokoban Icon
+tags=Heaps Engine, Haxe,Game dev
+description=I created this game in order to learn Haxe with the Heaps Engine. You can check the <a href="{{ rep_url }}">source code here</a>, learn more about <a href="https://heaps.io">heaps</a> and <a href="https://haxe.org">haxe</a>, and <a href="{{ play_now_url }}">play it on browser here</a>.
